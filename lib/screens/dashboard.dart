@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:raabta/routes/route.dart';
+import 'package:raabta/widgets/dashboard_widgets/dashboard_card.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -11,7 +13,7 @@ class Dashboard extends StatelessWidget {
           'R A A B T A',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        backgroundColor: const Color(0xff2382a1),
+        backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: Colors.white,
       ),
       drawer: const Drawer(),
@@ -21,171 +23,63 @@ class Dashboard extends StatelessWidget {
         children: [
           Row(
             children: [
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Card(
-                    elevation: 5,
-                    // color: Colors.blue.shade100,
-
-                    color: Colors.blue.shade100,
-                    child: Padding(
-                      padding: const EdgeInsets.all(38.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/images/exclamation.png',
-                            height: 60,
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.all(0.0),
-                            child: Text(
-                              'Offense List',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Color.fromARGB(255, 2, 82, 148)),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Card(
-                    elevation: 5,
-                    color: Colors.orange.shade100,
-                    child: Padding(
-                      padding: const EdgeInsets.all(38.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/images/exclamation.png',
-                            height: 60,
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.all(0.0),
-                            child: Text('Offense List'),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+              DashboardCard(
+                  onTap: () {
+                    Navigator.of(context).pushNamed(AppRouter.offense);
+                  },
+                  textColor: const Color.fromARGB(255, 24, 110, 180),
+                  color: Colors.blue.shade50,
+                  image: 'assets/images/list.png',
+                  text: 'Offense List'),
+              DashboardCard(
+                onTap: () {},
+                imagecolors: const Color.fromARGB(255, 197, 120, 4),
+                color: Colors.orange.shade50,
+                image: 'assets/images/id-card.png',
+                text: 'Traffic Sign Test',
+                textColor: const Color.fromARGB(255, 197, 120, 4),
               ),
             ],
           ),
           Row(
             children: [
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Card(
-                    elevation: 5,
-                    color: Colors.red.shade100,
-                    child: Padding(
-                      padding: const EdgeInsets.all(38.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/images/exclamation.png',
-                            height: 60,
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.all(0.0),
-                            child: Text('Offense List'),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+              DashboardCard(
+                onTap: () {},
+                imagecolors: Colors.red,
+                color: Colors.red.shade100,
+                image: 'assets/images/id-card.png',
+                text: 'Traffic Education',
+                textColor: const Color.fromARGB(255, 162, 44, 35),
               ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Card(
-                    elevation: 5,
-                    color: Colors.yellow.shade100,
-                    child: Padding(
-                      padding: const EdgeInsets.all(38.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/images/exclamation.png',
-                            height: 60,
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.all(0.0),
-                            child: Text('Offense List'),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+              DashboardCard(
+                onTap: () {
+                  Navigator.of(context).pushNamed(AppRouter.liscense);
+                },
+                imagecolors: const Color.fromARGB(255, 162, 176, 33),
+                color: Colors.yellow.shade50,
+                image: 'assets/images/id-card.png',
+                text: 'Liscense Procedure',
+                textColor: const Color.fromARGB(255, 131, 142, 36),
               ),
             ],
           ),
           Row(
             children: [
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Card(
-                    elevation: 5,
-                    color: Colors.green.shade100,
-                    child: Padding(
-                      padding: const EdgeInsets.all(38.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/images/exclamation.png',
-                            height: 60,
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.all(0.0),
-                            child: Text('Offense List'),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+              DashboardCard(
+                onTap: () {},
+                imagecolors: const Color.fromARGB(255, 64, 149, 67),
+                color: Colors.green.shade100,
+                image: 'assets/images/id-card.png',
+                text: 'Traffic Status',
+                textColor: const Color.fromARGB(255, 55, 139, 58),
               ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Card(
-                    elevation: 5,
-                    color: Colors.blueGrey.shade100,
-                    child: Padding(
-                      padding: const EdgeInsets.all(38.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/images/exclamation.png',
-                            height: 60,
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.all(0.0),
-                            child: Text('Offense List'),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+              DashboardCard(
+                onTap: () {},
+                imagecolors: Colors.blueGrey,
+                color: Colors.blueGrey.shade100,
+                image: 'assets/images/id-card.png',
+                text: 'Live Radio',
+                textColor: const Color.fromARGB(255, 100, 124, 136),
               ),
             ],
           )

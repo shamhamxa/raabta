@@ -15,6 +15,7 @@ class MyNav extends StatelessWidget {
     return Consumer<UIcontroller>(
       builder: (context, value, child) {
         return CurvedNavigationBar(
+          animationDuration: const Duration(milliseconds: 400),
           index: value.currentIndex,
           // selectedIndex: value.currentIndex,
           color: const Color(0xff2382a1),

@@ -24,10 +24,9 @@ class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 50),
+          padding: const EdgeInsets.symmetric(vertical: 70),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -43,7 +42,7 @@ class _SplashState extends State<Splash> {
                     style: TextStyle(
                         fontSize: 42,
                         fontWeight: FontWeight.bold,
-                        color: Theme.of(context).primaryColor),
+                        color: Theme.of(context).colorScheme.primary),
                   ),
                   const Text(
                     'PUBLIC TRAFFIC APPLICATION',
@@ -58,21 +57,28 @@ class _SplashState extends State<Splash> {
               //   height: 250,
               // ),
 
-              const Column(
+              Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: LinearProgressIndicator(),
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: LinearProgressIndicator(
+                      borderRadius: BorderRadius.circular(10),
+                      backgroundColor: Colors.green.shade50,
+                      valueColor: AlwaysStoppedAnimation(
+                          Theme.of(context).colorScheme.primary),
+                    ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  Text(
+                  const Text(
                     'Powered by \n KP Traffic Police',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
                   ),
                 ],
               )
