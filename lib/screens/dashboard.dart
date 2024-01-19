@@ -16,7 +16,38 @@ class Dashboard extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: Colors.white,
       ),
-      drawer: const Drawer(),
+      drawer: Drawer(
+        backgroundColor: Colors.grey.shade300,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog.adaptive(
+                        content: const Text('kamal'),
+                        actions: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: ElevatedButton(
+                                onPressed: () {}, child: const Text('kamal')),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: ElevatedButton(
+                                onPressed: () {}, child: const Text('kamal')),
+                          )
+                        ],
+                      );
+                    },
+                  );
+                },
+                child: const Text('Button')),
+          ],
+        ),
+      ),
       backgroundColor: Colors.white,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -33,9 +64,9 @@ class Dashboard extends StatelessWidget {
                   text: 'Offense List'),
               DashboardCard(
                 onTap: () {},
-                imagecolors: const Color.fromARGB(255, 197, 120, 4),
+                // imagecolors: const Color.fromARGB(255, 197, 120, 4),
                 color: Colors.orange.shade50,
-                image: 'assets/images/id-card.png',
+                image: 'assets/images/checked.png',
                 text: 'Traffic Sign Test',
                 textColor: const Color.fromARGB(255, 197, 120, 4),
               ),
@@ -45,9 +76,8 @@ class Dashboard extends StatelessWidget {
             children: [
               DashboardCard(
                 onTap: () {},
-                imagecolors: Colors.red,
                 color: Colors.red.shade100,
-                image: 'assets/images/id-card.png',
+                image: 'assets/images/warning.png',
                 text: 'Traffic Education',
                 textColor: const Color.fromARGB(255, 162, 44, 35),
               ),
@@ -55,11 +85,11 @@ class Dashboard extends StatelessWidget {
                 onTap: () {
                   Navigator.of(context).pushNamed(AppRouter.liscense);
                 },
-                imagecolors: const Color.fromARGB(255, 162, 176, 33),
-                color: Colors.yellow.shade50,
+                imagecolors: Colors.teal,
+                color: Colors.teal.shade100,
                 image: 'assets/images/id-card.png',
                 text: 'Liscense Procedure',
-                textColor: const Color.fromARGB(255, 131, 142, 36),
+                textColor: Colors.teal,
               ),
             ],
           ),
@@ -67,17 +97,16 @@ class Dashboard extends StatelessWidget {
             children: [
               DashboardCard(
                 onTap: () {},
-                imagecolors: const Color.fromARGB(255, 64, 149, 67),
                 color: Colors.green.shade100,
-                image: 'assets/images/id-card.png',
+                image: 'assets/images/traffic-light.png',
                 text: 'Traffic Status',
                 textColor: const Color.fromARGB(255, 55, 139, 58),
               ),
               DashboardCard(
+                imagecolors: const Color.fromARGB(255, 88, 110, 121),
                 onTap: () {},
-                imagecolors: Colors.blueGrey,
                 color: Colors.blueGrey.shade100,
-                image: 'assets/images/id-card.png',
+                image: 'assets/images/radio.png',
                 text: 'Live Radio',
                 textColor: const Color.fromARGB(255, 100, 124, 136),
               ),
