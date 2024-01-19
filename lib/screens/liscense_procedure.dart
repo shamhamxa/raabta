@@ -18,7 +18,7 @@ class LiscenseProcedure extends StatelessWidget {
         child: ListView(
           children: [
             SizedBox(
-              height: MediaQuery.sizeOf(context).height * 0.8,
+              height: MediaQuery.sizeOf(context).height * 0.87,
               child: Column(
                 // scrollDirection: Axis.horizontal,
                 children: [
@@ -181,13 +181,16 @@ class LiscenseProcedure extends StatelessWidget {
                   ),
                   SizedBox(
                     height: 40,
-                    child: Text(
-                      'DRIVING LISCENSE FOR DIPLOMATS AND EMBASSY OFFICERS/OFFICIALS',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 15,
-                          color: Theme.of(context).colorScheme.primary),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: Text(
+                        'DRIVING LISCENSE FOR DIPLOMATS AND EMBASSY OFFICERS/OFFICIALS',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 15,
+                            color: Theme.of(context).colorScheme.primary),
+                      ),
                     ),
                   ),
                   const SizedBox(
