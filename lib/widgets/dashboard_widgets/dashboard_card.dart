@@ -29,7 +29,7 @@ class DashboardCard extends StatelessWidget {
 
             color: color,
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 48),
+              padding: const EdgeInsets.symmetric(vertical: 35),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -41,13 +41,10 @@ class DashboardCard extends StatelessWidget {
                   const SizedBox(
                     height: 8,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(0.0),
-                    child: Text(
-                      text,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 15, color: textColor),
-                    ),
+                  Text(
+                    text,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 15, color: textColor),
                   ),
                 ],
               ),

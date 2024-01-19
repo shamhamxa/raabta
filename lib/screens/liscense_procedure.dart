@@ -26,8 +26,8 @@ class LiscenseProcedure extends StatelessWidget {
                     child: Text(
                       'DRIVING LISCENSE FOR AFGHAN NATIONAL',
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14,
                           color: Theme.of(context).colorScheme.primary),
                     ),
                   ),
@@ -138,8 +138,8 @@ class LiscenseProcedure extends StatelessWidget {
                     child: Text(
                       'DRIVING LISCENSE FOR AFGHAN NATIONAL',
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14,
                           color: Theme.of(context).colorScheme.primary),
                     ),
                   ),
@@ -182,13 +182,13 @@ class LiscenseProcedure extends StatelessWidget {
                   SizedBox(
                     height: 40,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      padding: const EdgeInsets.symmetric(horizontal: 14),
                       child: Text(
                         'DRIVING LISCENSE FOR DIPLOMATS AND EMBASSY OFFICERS/OFFICIALS',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 14,
                             color: Theme.of(context).colorScheme.primary),
                       ),
                     ),
