@@ -17,7 +17,7 @@ class InternationalLearnerPermit extends StatelessWidget {
       body: const SizedBox(
         width: double.infinity,
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 150, horizontal: 30),
+          padding: EdgeInsets.symmetric(vertical: 100, horizontal: 30),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.start,

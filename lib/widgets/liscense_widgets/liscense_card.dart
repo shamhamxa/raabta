@@ -29,7 +29,7 @@ class LiscenseCard extends StatelessWidget {
 
           color: color,
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 10),
+            padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 10),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

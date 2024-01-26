@@ -17,7 +17,7 @@ class InternationalDrivingLicense extends StatelessWidget {
       body: const SizedBox(
         width: double.infinity,
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 120, horizontal: 30),
+          padding: EdgeInsets.symmetric(vertical: 80, horizontal: 30),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.start,

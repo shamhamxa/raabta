@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:raabta/routes/route.dart';
+import 'package:raabta/webview/website.dart';
 import 'package:raabta/widgets/dashboard_widgets/dashboard_card.dart';
 
 class Dashboard extends StatelessWidget {
@@ -17,35 +18,55 @@ class Dashboard extends StatelessWidget {
         foregroundColor: Colors.white,
       ),
       drawer: Drawer(
-        backgroundColor: Colors.grey.shade300,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog.adaptive(
-                        content: const Text('kamal'),
-                        actions: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ElevatedButton(
-                                onPressed: () {}, child: const Text('kamal')),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ElevatedButton(
-                                onPressed: () {}, child: const Text('kamal')),
-                          )
-                        ],
-                      );
-                    },
-                  );
+        // backgroundColor: Colors.white.shade300,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 60),
+          child: Column(
+            children: [
+              Image.asset(
+                'assets/images/logo.png',
+                height: 150,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              ListTile(
+                splashColor: Colors.blue.shade100,
+                onTap: () {
+                  Navigator.of(context).pushReplacementNamed(AppRouter.home);
                 },
-                child: const Text('Button')),
-          ],
+                leading: Image.asset(
+                  'assets/images/home.png',
+                  height: 35,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+                title: const Text('Home'),
+              ),
+              ListTile(
+                splashColor: Colors.blue.shade100,
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const KPKTraffic()));
+                },
+                leading: Image.asset(
+                  'assets/images/world.png',
+                  height: 30,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+                title: const Text('KP Website'),
+              ),
+              ListTile(
+                leading: Image.asset(
+                  'assets/images/telephone.png',
+                  height: 30,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+                title: const Text('Contact Us'),
+              ),
+            ],
+          ),
         ),
       ),
       backgroundColor: Colors.white,
