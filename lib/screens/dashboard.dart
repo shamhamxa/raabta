@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:raabta/routes/route.dart';
-import 'package:raabta/webview/website.dart';
+import 'package:raabta/screens/traffic_sign_test/traffic_sign_test.dart';
 import 'package:raabta/widgets/dashboard_widgets/dashboard_card.dart';
+import 'package:raabta/widgets/side_bar.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -17,58 +18,7 @@ class Dashboard extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: Colors.white,
       ),
-      drawer: Drawer(
-        // backgroundColor: Colors.white.shade300,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 60),
-          child: Column(
-            children: [
-              Image.asset(
-                'assets/images/logo.png',
-                height: 150,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              ListTile(
-                splashColor: Colors.blue.shade100,
-                onTap: () {
-                  Navigator.of(context).pushReplacementNamed(AppRouter.home);
-                },
-                leading: Image.asset(
-                  'assets/images/home.png',
-                  height: 35,
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-                title: const Text('Home'),
-              ),
-              ListTile(
-                splashColor: Colors.blue.shade100,
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const KPKTraffic()));
-                },
-                leading: Image.asset(
-                  'assets/images/world.png',
-                  height: 30,
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-                title: const Text('KP Website'),
-              ),
-              ListTile(
-                leading: Image.asset(
-                  'assets/images/telephone.png',
-                  height: 30,
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-                title: const Text('Contact Us'),
-              ),
-            ],
-          ),
-        ),
-      ),
+      drawer: const SideBar(),
       backgroundColor: Colors.white,
       body: SizedBox(
         height: MediaQuery.sizeOf(context).height * 0.80,
@@ -81,12 +31,17 @@ class Dashboard extends StatelessWidget {
                     onTap: () {
                       Navigator.of(context).pushNamed(AppRouter.offense);
                     },
-                    textColor: const Color.fromARGB(255, 24, 110, 180),
+                    textColor: const Color.fromRGBO(24, 110, 180, 1),
                     color: Colors.blue.shade50,
                     image: 'assets/images/list.png',
                     text: 'Offense List'),
                 DashboardCard(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const TrafficSignTest()));
+                  },
                   // imagecolors: const Color.fromARGB(255, 197, 120, 4),
                   color: Colors.orange.shade50,
                   image: 'assets/images/checked.png',
