@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:raabta/utils/media_query.dart';
 
 class LicenseTestCard extends StatelessWidget {
@@ -10,6 +9,7 @@ class LicenseTestCard extends StatelessWidget {
     required this.text,
     required this.urduText,
     required this.textColor,
+    required this.ontap,
     super.key,
   });
   final Color containerColor;
@@ -18,28 +18,26 @@ class LicenseTestCard extends StatelessWidget {
   final Color borderColor;
   final String image;
   final Color textColor;
+  final void Function()? ontap;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: GestureDetector(
-        onTap: () {
-          SystemSound.play(SystemSoundType.alert);
-          print('object');
-        },
+        onTap: ontap,
         child: Card(
           // shape:
           //     RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           margin: EdgeInsets.zero,
           surfaceTintColor: Colors.transparent,
           shadowColor: Colors.black.withOpacity(0.8),
-          elevation: 6,
+          elevation: 9,
           child: Container(
             margin: EdgeInsets.zero,
             padding: EdgeInsets.zero,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(width: 1, color: borderColor),
+              border: Border.all(width: 0.7, color: borderColor),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -80,10 +78,10 @@ class LicenseTestCard extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(right: 20),
+                  padding: const EdgeInsets.only(right: 10),
                   child: Image.asset(
                     image,
-                    height: 70,
+                    height: 130,
                   ),
                 )
               ],

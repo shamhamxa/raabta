@@ -32,6 +32,7 @@ class RaabtaApp extends StatelessWidget {
         child: Consumer<ThemeProvider>(
           builder: (context, theme, child) {
             return MaterialApp(
+              debugShowCheckedModeBanner: false,
               theme: ThemeData(
                 brightness: Brightness.light,
                 colorScheme: const ColorScheme.light(

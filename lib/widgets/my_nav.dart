@@ -18,7 +18,7 @@ class MyNav extends StatelessWidget {
           animationDuration: const Duration(milliseconds: 400),
           index: value.currentIndex,
           // selectedIndex: value.currentIndex,
-          color: const Color(0xff2382a1),
+          color: Theme.of(context).colorScheme.primary,
           // gap: 6,
           // activeColor: Colors.white,
           // tabBackgroundColor: context.read<ThemeProvider>().isdark

@@ -5,7 +5,7 @@ ThemeData lightMode = ThemeData(
   brightness: Brightness.light,
   colorScheme: const ColorScheme.light(
     background: AppColor.white,
-    primary: Color(0xff2382a1),
+    primary: Color.fromARGB(255, 40, 148, 184),
     secondary: AppColor.white,
   ),
 );

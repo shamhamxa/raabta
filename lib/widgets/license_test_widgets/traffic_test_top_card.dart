@@ -4,69 +4,78 @@ import 'package:raabta/utils/media_query.dart';
 class TrafficSignTopContainer extends StatelessWidget {
   const TrafficSignTopContainer({
     super.key,
+    required this.text,
     required this.scaffoldKey,
   });
 
   final GlobalKey<ScaffoldState> scaffoldKey;
-
+  final String text;
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.primary,
         borderRadius: const BorderRadius.only(
-          bottomLeft: Radius.circular(30),
-          bottomRight: Radius.circular(30),
-        ),
+            // bottomLeft: Radius.circular(30),
+            // bottomRight: Radius.circular(20),
+            ),
       ),
       width: double.infinity,
-      height: screenheight(context) * 0.35,
+      height: screenheight(context) * 0.32,
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.6),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    height: 50,
-                    width: 50,
-                    child: Icon(
-                      Icons.arrow_back_outlined,
-                      color: Theme.of(context).colorScheme.primary,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.7),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      height: 40,
+                      width: 45,
+                      child: Icon(
+                        Icons.arrow_back_outlined,
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
                     ),
                   ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(right: 18),
-                  child: Text(
-                    'License',
+                  Text(
+                    text,
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: const TextStyle(
                         color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
+                        fontSize: 22,
+                        fontWeight: FontWeight.w500),
                   ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    print('object');
-                    scaffoldKey.currentState!.openDrawer();
-                  },
-                  child: const Icon(
-                    Icons.menu,
-                    color: Colors.white,
+                  GestureDetector(
+                    onTap: () {
+                      print('object');
+                      scaffoldKey.currentState!.openDrawer();
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.7),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      height: 40,
+                      width: 45,
+                      child: Icon(
+                        Icons.menu,
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             Image.asset(
               'assets/images/logo.png',

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:raabta/screens/start_test_catagory/start_test_catagory.dart';
+import 'package:raabta/screens/sign_test/sign_test.dart';
 import 'package:raabta/utils/media_query.dart';
 import 'package:raabta/widgets/license_test_widgets/license_test_card.dart';
 import 'package:raabta/widgets/license_test_widgets/traffic_test_top_card.dart';
 import 'package:raabta/widgets/side_bar.dart';
 
-class TrafficSignTest extends StatelessWidget {
-  const TrafficSignTest({super.key});
+class StartTestCatagory extends StatelessWidget {
+  const StartTestCatagory({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +21,7 @@ class TrafficSignTest extends StatelessWidget {
       body: Column(
         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          TrafficSignTopContainer(
-              scaffoldKey: scaffoldKey, text: 'License Test'),
+          TrafficSignTopContainer(scaffoldKey: scaffoldKey, text: 'Start Test'),
           SizedBox(
             height: screenheight(context) * 0.04,
           ),
@@ -33,34 +32,34 @@ class TrafficSignTest extends StatelessWidget {
               children: [
                 LicenseTestCard(
                   ontap: () {},
-                  textColor: const Color.fromRGBO(16, 77, 128, 1),
-                  borderColor: const Color.fromRGBO(16, 77, 128, 1),
-                  containerColor: Colors.blue.shade100,
+                  textColor: const Color.fromARGB(255, 144, 88, 3),
+                  borderColor: const Color.fromARGB(255, 171, 104, 3),
+                  containerColor: Colors.orange.shade100,
                   image: 'assets/images/student.jpeg',
-                  text: '   Prepare Yourself',
-                  urduText: 'اپنے آپ کو تیار کرو   ',
+                  text: '   Random Questions',
+                  urduText: 'بے ترتیب سوال   ',
                 ),
                 LicenseTestCard(
                     ontap: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const StartTestCatagory()));
+                              builder: (context) => const SignTest()));
                     },
-                    textColor: const Color.fromARGB(255, 42, 107, 44),
+                    textColor: const Color.fromARGB(255, 135, 36, 29),
                     image: 'assets/images/traffic.jpeg',
-                    borderColor: const Color.fromARGB(255, 41, 103, 43),
-                    containerColor: Colors.green.shade100,
-                    text: '   Start Test',
-                    urduText: 'ٹیسٹ شروع کریں   '),
+                    borderColor: const Color.fromARGB(255, 162, 44, 35),
+                    containerColor: Colors.red.shade100,
+                    text: '   Sign Test',
+                    urduText: 'سائن ٹیسٹ   '),
                 LicenseTestCard(
                     ontap: () {},
-                    textColor: const Color.fromARGB(255, 61, 34, 84),
+                    textColor: const Color.fromARGB(255, 0, 121, 109),
                     image: 'assets/images/test.jpeg',
-                    borderColor: const Color.fromARGB(255, 75, 41, 103),
-                    containerColor: const Color.fromARGB(255, 242, 207, 248),
-                    text: '   Score',
-                    urduText: ' سکور   '),
+                    borderColor: const Color.fromARGB(255, 0, 121, 109),
+                    containerColor: Colors.teal.shade100,
+                    text: '   Theory Test',
+                    urduText: ' تھیوری ٹیسٹ   '),
               ],
             ),
           )
