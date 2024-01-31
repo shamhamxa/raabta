@@ -1,0 +1,48 @@
+import 'package:flutter/material.dart';
+import 'package:raabta/utils/media_query.dart';
+
+class TestSelection extends StatelessWidget {
+  const TestSelection({
+    required this.alphabet,
+    required this.option,
+    required this.onTap,
+    required this.value,
+    required this.number,
+    super.key,
+  });
+  final String alphabet;
+  final String option;
+  final int value;
+  final int number;
+  final void Function()? onTap;
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: screenwidth(context) * 0.5,
+        height: 50,
+        decoration: BoxDecoration(
+            color: number == value
+                ? const Color.fromARGB(255, 136, 196, 215)
+                : Colors.transparent,
+            borderRadius: BorderRadius.circular(5),
+            border: Border.all(
+                width: 1, color: Theme.of(context).colorScheme.primary)),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Text(
+              alphabet,
+              style: const TextStyle(fontSize: 16),
+            ),
+            Text(
+              option,
+              style: const TextStyle(fontSize: 18),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

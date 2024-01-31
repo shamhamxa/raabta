@@ -38,7 +38,7 @@ class RaabtaApp extends StatelessWidget {
                 colorScheme: const ColorScheme.light(
                   background: AppColor.white,
                   primary: Color(0xff2382a1),
-                  secondary: AppColor.white,
+                  secondary: Color.fromARGB(255, 177, 208, 218),
                 ),
                 textTheme:
                     GoogleFonts.nunitoTextTheme(Theme.of(context).textTheme),
