@@ -13,18 +13,21 @@ class AppButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: isEnable ? ontap : null,
-      child: Container(
-        width: screenwidth(context) * 0.5,
-        height: 50,
-        decoration: BoxDecoration(
-            color: isEnable
-                ? Theme.of(context).colorScheme.primary
-                : Colors.grey.shade400,
-            borderRadius: BorderRadius.circular(5)),
-        child: const Center(
-          child: Text(
-            'Next',
-            style: TextStyle(color: Colors.white, fontSize: 16),
+      child: Card(
+        elevation: 5,
+        child: Container(
+          width: screenwidth(context) * 0.5,
+          height: 50,
+          decoration: BoxDecoration(
+              color: isEnable
+                  ? Theme.of(context).colorScheme.primary
+                  : Colors.grey.shade400,
+              borderRadius: BorderRadius.circular(5)),
+          child: const Center(
+            child: Text(
+              'Next',
+              style: TextStyle(color: Colors.white, fontSize: 16),
+            ),
           ),
         ),
       ),

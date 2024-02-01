@@ -21,7 +21,7 @@ class _SignTestState extends State<SignTest> {
   bool isOptionSelected = false;
 
   final List questions = [
-    'what does this sign mean ?',
+    'choose one number ?',
     'what is your name ?',
     'who is your brother ?',
   ];
@@ -41,7 +41,7 @@ class _SignTestState extends State<SignTest> {
         foregroundColor: Colors.white,
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 100),
+        padding: const EdgeInsets.symmetric(vertical: 80),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -131,7 +131,7 @@ class _SignTestState extends State<SignTest> {
               ],
             ),
             const SizedBox(
-              height: 10,
+              height: 30,
             ),
             AppButton(
               isEnable: isOptionSelected,
