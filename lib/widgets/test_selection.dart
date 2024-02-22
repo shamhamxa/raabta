@@ -20,7 +20,7 @@ class TestSelection extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: screenwidth(context) * 0.5,
+        width: screenwidth(context) * 0.75,
         height: 50,
         decoration: BoxDecoration(
             color: number == value
@@ -29,18 +29,27 @@ class TestSelection extends StatelessWidget {
             borderRadius: BorderRadius.circular(5),
             border: Border.all(
                 width: 1, color: Theme.of(context).colorScheme.primary)),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Text(
-              alphabet,
-              style: const TextStyle(fontSize: 16),
-            ),
-            Text(
-              option,
-              style: const TextStyle(fontSize: 18),
-            ),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.only(left: 20),
+          child: Row(
+            children: [
+              Text(
+                alphabet,
+                style: const TextStyle(fontSize: 16),
+              ),
+              const SizedBox(
+                width: 50,
+              ),
+              Flexible(
+                child: Text(
+                  option,
+                  style: const TextStyle(fontSize: 14),
+                  overflow: TextOverflow.visible,
+                  // Allow overflow
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

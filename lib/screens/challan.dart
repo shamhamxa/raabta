@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:raabta/utils/media_query.dart';
+import 'package:raabta/widgets/side_bar.dart';
 
 class Challan extends StatefulWidget {
   const Challan({super.key});
@@ -15,15 +15,21 @@ class _ChallanState extends State<Challan> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const SideBar(),
       appBar: AppBar(
-        systemOverlayStyle: const SystemUiOverlayStyle(
-          // Status bar color
-          statusBarColor: Colors.red,
-
-          // Status bar brightness (optional)
-          statusBarIconBrightness: Brightness.dark, // For Android (dark icons)
-          statusBarBrightness: Brightness.light, // For iOS (dark icons)
+        title: const Text(
+          'License Details',
         ),
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        foregroundColor: Colors.white,
+        // systemOverlayStyle: const SystemUiOverlayStyle(
+        //   // Status bar color
+        //   statusBarColor: Colors.red,
+
+        //   // Status bar brightness (optional)
+        //   statusBarIconBrightness: Brightness.dark, // For Android (dark icons)
+        //   statusBarBrightness: Brightness.light, // For iOS (dark icons)
+        // ),
       ),
       body: Form(
         key: formKey,
@@ -31,6 +37,9 @@ class _ChallanState extends State<Challan> {
           child: ListView(
             // mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
+              const SizedBox(
+                height: 10,
+              ),
               Image.asset(
                 'assets/images/logo.png',
                 height: 120,
@@ -89,100 +98,82 @@ class _ChallanState extends State<Challan> {
               ),
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+                    const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                 child: Card(
+                  elevation: 3,
                   color: Theme.of(context).colorScheme.secondary,
                   surfaceTintColor: Colors.transparent,
                   child: DataTable(
-                      columnSpacing: 150,
+                      dataRowMaxHeight: 55,
+                      columnSpacing: 80,
                       decoration: const BoxDecoration(),
-                      dividerThickness: 0.2,
+                      dividerThickness: 0.1,
                       columns: const [
                         DataColumn(
-                          label: Text('name'),
+                          label: Text('Name'),
                         ),
                         DataColumn(
-                          label: Text('discription'),
+                          label: Text('Kamal'),
                         ),
                       ],
                       rows: const [
                         DataRow(
                           cells: [
                             DataCell(
-                              Text('data'),
+                              Text('Father Name'),
                             ),
                             DataCell(
-                              Text('data'),
-                            ),
-                          ],
-                        ),
-                        DataRow(
-                          cells: [
-                            DataCell(
-                              Text('data'),
-                            ),
-                            DataCell(
-                              Text('data'),
+                              Text('Iqbal'),
                             ),
                           ],
                         ),
                         DataRow(
                           cells: [
                             DataCell(
-                              Text('data'),
+                              Text('CNIC Number'),
                             ),
                             DataCell(
-                              Text('data'),
-                            ),
-                          ],
-                        ),
-                        DataRow(
-                          cells: [
-                            DataCell(
-                              Text('data'),
-                            ),
-                            DataCell(
-                              Text('data'),
+                              Text('17301-999222870-9'),
                             ),
                           ],
                         ),
                         DataRow(
                           cells: [
                             DataCell(
-                              Text('data'),
+                              Text('License Number'),
                             ),
                             DataCell(
-                              Text('data'),
-                            ),
-                          ],
-                        ),
-                        DataRow(
-                          cells: [
-                            DataCell(
-                              Text('data'),
-                            ),
-                            DataCell(
-                              Text('data'),
+                              Text('1234567890'),
                             ),
                           ],
                         ),
                         DataRow(
                           cells: [
                             DataCell(
-                              Text('data'),
+                              Text('District'),
                             ),
                             DataCell(
-                              Text('data'),
+                              Text('Peshawar'),
                             ),
                           ],
                         ),
                         DataRow(
                           cells: [
                             DataCell(
-                              Text('data'),
+                              Text('License Type'),
                             ),
                             DataCell(
-                              Text('data'),
+                              Text('Motor Bike'),
+                            ),
+                          ],
+                        ),
+                        DataRow(
+                          cells: [
+                            DataCell(
+                              Text('Expiry Date'),
+                            ),
+                            DataCell(
+                              Text('1-07-2025'),
                             ),
                           ],
                         ),

@@ -6,9 +6,13 @@ class AppButton extends StatelessWidget {
     required this.ontap,
     super.key,
     required this.isEnable,
+    required this.text,
+    required this.color,
   });
   final bool isEnable;
   final Function()? ontap;
+  final String text;
+  final Color color;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -19,14 +23,12 @@ class AppButton extends StatelessWidget {
           width: screenwidth(context) * 0.5,
           height: 50,
           decoration: BoxDecoration(
-              color: isEnable
-                  ? Theme.of(context).colorScheme.primary
-                  : Colors.grey.shade400,
+              color: isEnable ? color : Colors.grey.shade400,
               borderRadius: BorderRadius.circular(5)),
-          child: const Center(
+          child: Center(
             child: Text(
-              'Next',
-              style: TextStyle(color: Colors.white, fontSize: 16),
+              text,
+              style: const TextStyle(color: Colors.white, fontSize: 16),
             ),
           ),
         ),
