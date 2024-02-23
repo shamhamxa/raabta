@@ -18,7 +18,7 @@ class LiscenseProcedure extends StatelessWidget {
         child: ListView(
           children: [
             SizedBox(
-              height: MediaQuery.sizeOf(context).height * 0.86,
+              height: MediaQuery.sizeOf(context).height * 0.83,
               child: Column(
                 // scrollDirection: Axis.horizontal,
                 children: [

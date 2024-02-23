@@ -50,6 +50,21 @@ class SideBar extends StatelessWidget {
               title: const Text('KP Website'),
             ),
             ListTile(
+              onTap: () {
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog.adaptive(
+                        content: const Text(
+                          'Call 24/7',
+                        ),
+                        actions: [
+                          IconButton(
+                              onPressed: () {}, icon: const Icon(Icons.call))
+                        ],
+                      );
+                    });
+              },
               leading: Image.asset(
                 'assets/images/telephone.png',
                 height: 30,
