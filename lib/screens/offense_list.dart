@@ -127,7 +127,7 @@ class _OffenseListState extends State<OffenseList> {
                                       children: [
                                         const Text('MoterCycle : '),
                                         Text(
-                                          offenseData.motorCycle.toString(),
+                                          offenseData.motorCycle ?? '',
                                           style: const TextStyle(
                                               fontWeight: FontWeight.bold),
                                         ),
