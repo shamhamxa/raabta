@@ -38,9 +38,10 @@ class _OffenseListState extends State<OffenseList> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          centerTitle: true,
           backgroundColor: Theme.of(context).colorScheme.primary,
           foregroundColor: Colors.white,
-          title: const Text('Offense List'),
+          title: const Text('OFFENSE LIST'),
         ),
         body: FutureBuilder(
           future: getData(),
@@ -127,7 +128,7 @@ class _OffenseListState extends State<OffenseList> {
                                       children: [
                                         const Text('MoterCycle : '),
                                         Text(
-                                          offenseData.motorCycle ?? '',
+                                          offenseData.motorCycle.toString(),
                                           style: const TextStyle(
                                               fontWeight: FontWeight.bold),
                                         ),
@@ -159,7 +160,7 @@ class _OffenseListState extends State<OffenseList> {
                                       children: [
                                         const Text('PSV/LTV : '),
                                         Text(
-                                          offenseData.ltv!,
+                                          offenseData.ltv.toString(),
                                           style: const TextStyle(
                                               fontWeight: FontWeight.bold),
                                         ),
@@ -172,7 +173,7 @@ class _OffenseListState extends State<OffenseList> {
                                       children: [
                                         const Text('HTV : '),
                                         Text(
-                                          offenseData.psvHtv!,
+                                          offenseData.psvHtv.toString(),
                                           style: const TextStyle(
                                               fontWeight: FontWeight.bold),
                                         ),

@@ -37,7 +37,7 @@ class TrafficSignTopContainer extends StatelessWidget {
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.7),
+                        color: Colors.white.withOpacity(0.8),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       height: 40,
@@ -63,7 +63,7 @@ class TrafficSignTopContainer extends StatelessWidget {
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.7),
+                        color: Colors.white.withOpacity(0.8),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       height: 40,

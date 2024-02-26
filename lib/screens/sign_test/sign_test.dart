@@ -26,7 +26,8 @@ class _SignTestState extends State<SignTest> {
   bool isOptionSelected = false;
   String text = 'Next';
   Color? color;
-  final confettiController = ConfettiController();
+  final confettiController =
+      ConfettiController(duration: const Duration(seconds: 3));
 
   final List questions = [
     'What does this sign mean?',
@@ -177,16 +178,17 @@ class _SignTestState extends State<SignTest> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Scaffold(
-          backgroundColor: Colors.indigo.shade50,
-          appBar: AppBar(
-            title: const Text('T E S T'),
-            backgroundColor: Theme.of(context).colorScheme.primary,
-            foregroundColor: Colors.white,
-          ),
-          body: Padding(
+    return Scaffold(
+      backgroundColor: Colors.indigo.shade50,
+      appBar: AppBar(
+        title: const Text('T E S T'),
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        foregroundColor: Colors.white,
+      ),
+      body: Stack(
+        alignment: Alignment.topCenter,
+        children: [
+          Padding(
             padding: const EdgeInsets.symmetric(vertical: 80),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -324,7 +326,11 @@ class _SignTestState extends State<SignTest> {
                     : const Text(''),
                 currentQuestionIndex == questions.length
                     ? AppButton(
-                        ontap: () {
+                        ontap: () async {
+                          score >= 10
+                              ? confettiController.play()
+                              : const SizedBox();
+                          // ignore: use_build_context_synchronously
                           showDialog(
                             context: context,
                             builder: (context) {
@@ -338,10 +344,29 @@ class _SignTestState extends State<SignTest> {
                                       style: const TextStyle(fontSize: 18),
                                     ),
                                     if (score < 10)
-                                      const Text('Need More Practice !'),
+                                      const Column(
+                                        children: [
+                                          Text('Need More Practice  👎'),
+
+                                          // Add more widgets as needed
+                                        ],
+                                      ),
                                     if (score >= 10 && score < 15)
-                                      const Text('Good'),
-                                    if (score >= 15) const Text('Excellent'),
+                                      const Column(
+                                        children: [
+                                          Text('Good  👍'),
+
+                                          // Add more widgets as needed
+                                        ],
+                                      ),
+                                    if (score >= 15)
+                                      const Column(
+                                        children: [
+                                          Text('Excellent 😍'),
+
+                                          // Add more widgets as needed
+                                        ],
+                                      ),
                                   ],
                                 ),
                                 actions: [
@@ -360,9 +385,12 @@ class _SignTestState extends State<SignTest> {
               ],
             ),
           ),
-        ),
-        ConfettiWidget(confettiController: confettiController)
-      ],
+          ConfettiWidget(
+            confettiController: confettiController,
+            shouldLoop: false,
+          )
+        ],
+      ),
     );
   }
 
