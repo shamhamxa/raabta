@@ -69,15 +69,18 @@ class ImageEducation extends StatelessWidget {
               height: 10,
             ),
             Row(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.white,
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white,
+                    ),
+                    padding: const EdgeInsets.all(8),
+                    child: Text(
+                        trafficModel.imageDescriptionEng.replaceAll('\n', '')),
                   ),
-                  padding: const EdgeInsets.all(8),
-                  child: Text(
-                      trafficModel.imageDescriptionEng.replaceAll('\n', '')),
                 ),
               ],
             ),
@@ -87,13 +90,18 @@ class ImageEducation extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                    ),
-                    padding: const EdgeInsets.all(8),
-                    child: Text(trafficModel.imageDescriptionUrdu.trim())),
+                Expanded(
+                  child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.white,
+                      ),
+                      padding: const EdgeInsets.all(8),
+                      child: Text(
+                        trafficModel.imageDescriptionUrdu.trim(),
+                        textAlign: TextAlign.end,
+                      )),
+                ),
               ],
             ),
           ],

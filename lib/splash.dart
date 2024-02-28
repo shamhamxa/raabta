@@ -74,7 +74,7 @@ class _SplashState extends State<Splash> {
                     height: 10,
                   ),
                   const Text(
-                    'Powered by \n KP Traffic Police',
+                    'Powered by \n National Software Developers',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 20,
