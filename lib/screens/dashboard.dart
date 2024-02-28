@@ -50,7 +50,9 @@ class Dashboard extends StatelessWidget {
             Row(
               children: [
                 DashboardCard(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).pushNamed(AppRouter.trafficeducation);
+                  },
                   color: Colors.red.shade100,
                   image: 'assets/images/warning.png',
                   text: 'Traffic Education',

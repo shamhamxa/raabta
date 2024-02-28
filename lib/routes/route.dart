@@ -13,6 +13,7 @@ import 'package:raabta/screens/liscense_procedure.dart';
 import 'package:raabta/screens/offense_list.dart';
 import 'package:raabta/screens/officials/driving_license.dart';
 import 'package:raabta/screens/officials/learner_permit.dart';
+import 'package:raabta/screens/traffic_education/traffic_education.dart';
 import 'package:raabta/splash.dart';
 
 class AppRouter {
@@ -31,6 +32,7 @@ class AppRouter {
   static const String afghandrivinglicense = '/afghandrivinglicense';
   static const String internationalpermit = '/internationalpermit';
   static const String internationallicense = '/internationallicense';
+  static const String trafficeducation = '/trafficeducation';
 
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -42,6 +44,9 @@ class AppRouter {
 
       case offense:
         return MaterialPageRoute(builder: (context) => const OffenseList());
+      case trafficeducation:
+        return MaterialPageRoute(
+            builder: (context) => const TrafficEducation());
 
       case liscense:
         return MaterialPageRoute(
