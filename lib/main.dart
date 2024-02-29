@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:raabta/controller/slider_controller.dart';
 import 'package:raabta/controller/ui_controller.dart';
 import 'package:raabta/routes/route.dart';
 import 'package:raabta/theme/theme_provider.dart';
@@ -28,6 +29,7 @@ class RaabtaApp extends StatelessWidget {
           ChangeNotifierProvider(
             create: (context) => UIcontroller(),
           ),
+          ChangeNotifierProvider(create: (context) => SliderController()),
         ],
         child: Consumer<ThemeProvider>(
           builder: (context, theme, child) {
