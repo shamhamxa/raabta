@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:raabta/screens/score.dart';
 import 'package:raabta/screens/start_test_catagory/start_test_catagory.dart';
 import 'package:raabta/utils/media_query.dart';
 import 'package:raabta/widgets/license_test_widgets/license_test_card.dart';
@@ -54,7 +55,10 @@ class TrafficSignTest extends StatelessWidget {
                     text: '   Start Test',
                     urduText: 'ٹیسٹ شروع کریں   '),
                 LicenseTestCard(
-                    ontap: () {},
+                    ontap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const Score()));
+                    },
                     textColor: const Color.fromARGB(255, 61, 34, 84),
                     image: 'assets/images/test.jpeg',
                     borderColor: const Color.fromARGB(255, 75, 41, 103),

@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:provider/provider.dart';
+import 'package:raabta/controller/score.dart';
 import 'package:raabta/widgets/app_button.dart';
 import 'package:raabta/widgets/test_selection.dart';
 
@@ -24,32 +26,52 @@ class _SignTestState extends State<SignTest> {
   int optionPoint = 0;
   bool isEnable = false;
   bool isOptionSelected = false;
+  bool isPlayedOnce = false;
   String text = 'Next';
   Color? color;
   final confettiController =
       ConfettiController(duration: const Duration(seconds: 3));
 
-  final List questions = [
-    'What does this sign mean?',
-    'What does this sign mean?',
-    'What does this sign mean?',
-    'What does this sign mean?',
-    'What does this sign mean?',
-    'What does this sign mean?',
-    'What does this sign mean?',
-    'What does this sign mean?',
-    'What does this sign mean?',
-    'What does this sign mean?',
-    'What does this sign mean?',
-    'What does this sign mean?',
-    'What does this sign mean?',
-    'What does this sign mean?',
-    'What does this sign mean?',
-    'What does this sign mean?',
-    'What does this sign mean?',
-    'What does this sign mean?',
-    'What does this sign mean?',
-    'What does this sign mean?',
+  final List<Map<String, dynamic>> questions = [
+    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
+    // 'What does this sign mean?',
+    // 'What does this sign mean?',
+    // 'What does this sign mean?',
+    // 'What does this sign mean?',
+    // 'What does this sign mean?',
+    // 'What does this sign mean?',
+    // 'What does this sign mean?',
+    // 'What does this sign mean?',
+    // 'What does this sign mean?',
+    // 'What does this sign mean?',
+    // 'What does this sign mean?',
+    // 'What does this sign mean?',
+    // 'What does this sign mean?',
+    // 'What does this sign mean?',
+    // 'What does this sign mean?',
+    // 'What does this sign mean?',
+    // 'What does this sign mean?',
+    // 'What does this sign mean?',
+    // 'What does this sign mean?',
   ];
   final List<List<String>> optionsList = [
     [
@@ -222,9 +244,18 @@ class _SignTestState extends State<SignTest> {
                             style: TextStyle(fontSize: 18),
                           )
                         : Text(
-                            'Question : ${questions[point].toString()}      ${point + 1}/${questions.length}'),
+                            'Question : ${questions[point]['question'].toString()}      ${point + 1}/${questions.length}'),
                     const SizedBox(
-                      height: 30,
+                      height: 15,
+                    ),
+                    currentQuestionIndex == questions.length
+                        ? const Text('')
+                        : Image.asset(
+                            'assets/images/1.png',
+                            height: 70,
+                          ),
+                    const SizedBox(
+                      height: 15,
                     ),
                     currentQuestionIndex == questions.length
                         ? const SizedBox()
@@ -327,9 +358,17 @@ class _SignTestState extends State<SignTest> {
                 currentQuestionIndex == questions.length
                     ? AppButton(
                         ontap: () async {
-                          score >= 10
-                              ? confettiController.play()
+                          !isPlayedOnce
+                              ? context.read<TotalScore>().updateScore(score)
                               : const SizedBox();
+                          score >= 10
+                              ? !isPlayedOnce
+                                  ? confettiController.play()
+                                  : const SizedBox()
+                              : const SizedBox();
+                          setState(() {
+                            isPlayedOnce = true;
+                          });
                           // ignore: use_build_context_synchronously
                           showDialog(
                             context: context,

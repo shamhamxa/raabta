@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:raabta/controller/score.dart';
 import 'package:raabta/controller/slider_controller.dart';
 import 'package:raabta/controller/ui_controller.dart';
 import 'package:raabta/routes/route.dart';
@@ -30,6 +31,7 @@ class RaabtaApp extends StatelessWidget {
             create: (context) => UIcontroller(),
           ),
           ChangeNotifierProvider(create: (context) => SliderController()),
+          ChangeNotifierProvider(create: (context) => TotalScore()),
         ],
         child: Consumer<ThemeProvider>(
           builder: (context, theme, child) {

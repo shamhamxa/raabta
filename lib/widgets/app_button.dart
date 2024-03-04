@@ -20,7 +20,7 @@ class AppButton extends StatelessWidget {
       child: Card(
         elevation: 5,
         child: Container(
-          width: screenwidth(context) * 0.5,
+          width: screenwidth(context) * 0.65,
           height: 50,
           decoration: BoxDecoration(
               color: isEnable ? color : Colors.grey.shade400,

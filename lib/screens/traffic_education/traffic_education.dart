@@ -18,7 +18,7 @@ class TrafficEducation extends StatefulWidget {
 class _TrafficEducationState extends State<TrafficEducation> {
   List<TrafficModel>? trafficDataList;
   String baseUrl = 'https://ptpkp.gov.pk/dashboard/uploads/traffic-education/';
-
+  List<String>? imageUrls;
   @override
   void initState() {
     super.initState();
@@ -34,9 +34,14 @@ class _TrafficEducationState extends State<TrafficEducation> {
       if (response.statusCode == 200) {
         Map<String, dynamic> map = json.decode(response.body.toString());
         Traffic traffic = Traffic.fromJson(map);
+        imageUrls = traffic.traffic!
+            .map((trafficData) => baseUrl + trafficData.image)
+            .toList();
         setState(() {
           trafficDataList = traffic.traffic!;
+          log(trafficDataList!.first.imageTitle.toString());
           log(trafficDataList!.length.toString());
+          log(imageUrls.toString());
         });
       } else {
         throw Exception('Failed to load Data');
@@ -55,12 +60,12 @@ class _TrafficEducationState extends State<TrafficEducation> {
         foregroundColor: Colors.white,
         title: const Text('Traffic Education'),
       ),
-      body: trafficDataList != null
+      body: imageUrls != null
           ? ListView.builder(
               itemCount: trafficDataList!.length,
               itemBuilder: (context, index) {
+                print('1');
                 final trafficData = trafficDataList![index];
-                String imageUrl = baseUrl + trafficData.image;
 
                 return Padding(
                   padding: const EdgeInsets.all(3.0),
@@ -73,7 +78,8 @@ class _TrafficEducationState extends State<TrafficEducation> {
                           context,
                           MaterialPageRoute(
                             builder: (context) => ImageEducation(
-                                trafficModel: trafficData, image: imageUrl),
+                                trafficModel: trafficData,
+                                image: imageUrls![index]),
                           ),
                         );
                       },
@@ -92,7 +98,8 @@ class _TrafficEducationState extends State<TrafficEducation> {
                               const BoxDecoration(shape: BoxShape.circle),
                           child: CachedNetworkImage(
                             fit: BoxFit.fill,
-                            imageUrl: imageUrl,
+                            cacheKey: imageUrls![index],
+                            imageUrl: imageUrls![index],
                             placeholder: (context, url) => Container(
                               color: Colors.grey[200],
                             ),
