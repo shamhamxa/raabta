@@ -39,17 +39,14 @@ Widget buildImage(String images, int index, String data) => Column(
     );
 Widget buildindicator(List strings) => Consumer<SliderController>(
       builder: (context, sliderController, child) {
-        return Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: AnimatedSmoothIndicator(
-            activeIndex: sliderController.activeIndex,
-            count: strings.length,
-            effect: JumpingDotEffect(
-              dotWidth: 14,
-              dotColor: Colors.grey.shade300,
-              activeDotColor: Theme.of(context).colorScheme.primary,
-              dotHeight: 4,
-            ),
+        return AnimatedSmoothIndicator(
+          activeIndex: sliderController.activeIndex,
+          count: strings.length,
+          effect: JumpingDotEffect(
+            dotWidth: 14,
+            dotColor: Colors.grey.shade300,
+            activeDotColor: Theme.of(context).colorScheme.primary,
+            dotHeight: 4,
           ),
         );
       },

@@ -96,7 +96,7 @@ class _DashboardState extends State<Dashboard> {
                       ),
                     )
                   : SizedBox(
-                      height: screenheight(context) * 0.22,
+                      height: screenheight(context) * 0.20,
                       child: const Center(
                         child: CircularProgressIndicator(),
                       ),
