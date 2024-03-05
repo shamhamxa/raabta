@@ -42,11 +42,6 @@ class MyNav extends StatelessWidget {
               color: Colors.white,
               height: 30,
             ),
-            Image.asset(
-              'assets/images/id-card.png',
-              height: 30,
-              color: Colors.white,
-            ),
           ],
         );
       },

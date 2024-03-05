@@ -27,7 +27,6 @@ class Home extends StatelessWidget {
               children: const [
                 Dashboard(),
                 Challan(),
-                Challan(),
               ],
             ),
           );

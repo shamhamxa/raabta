@@ -64,111 +64,110 @@ class _DashboardState extends State<Dashboard> {
       drawer: const SideBar(),
       backgroundColor: Colors.white,
       body: SizedBox(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 25),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                sliderDataList != null
-                    ? CarouselSlider.builder(
-                        itemCount: sliderDataList!.length,
-                        itemBuilder: (context, index, realIndex) {
-                          if (sliderDataList!.isEmpty) {
-                            // Return a placeholder or loading indicator
-                            return const Center(
-                                child:
-                                    CircularProgressIndicator()); // Example: Loading indicator
-                          }
-                          final images = sliderDataList![index].image;
-                          final text = sliderDataList![index].title;
-                          final correctImage = baseUrl + images;
-                          return buildImage(correctImage, index, text);
+        height: screenheight(context),
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: 10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              sliderDataList != null
+                  ? CarouselSlider.builder(
+                      itemCount: sliderDataList!.length,
+                      itemBuilder: (context, index, realIndex) {
+                        if (sliderDataList!.isEmpty) {
+                          // Return a placeholder or loading indicator
+                          return const Center(
+                              child:
+                                  CircularProgressIndicator()); // Example: Loading indicator
+                        }
+                        final images = sliderDataList![index].image;
+                        final text = sliderDataList![index].title;
+                        final correctImage = baseUrl + images;
+                        return buildImage(correctImage, index, text);
+                      },
+                      options: CarouselOptions(
+                        aspectRatio: 13 / 6,
+                        autoPlay: true,
+                        // height: 270,
+                        onPageChanged: (index, reason) {
+                          // print(index);
+                          context.read<SliderController>().changeIndex(index);
                         },
-                        options: CarouselOptions(
-                          aspectRatio: 13 / 6,
-                          autoPlay: true,
-                          // height: 270,
-                          onPageChanged: (index, reason) {
-                            // print(index);
-                            context.read<SliderController>().changeIndex(index);
-                          },
-                        ),
-                      )
-                    : SizedBox(
-                        height: screenheight(context) * 0.22,
-                        child: const Center(
-                          child: CircularProgressIndicator(),
-                        ),
                       ),
-                buildindicator(sliderDataList ?? []),
-                Row(
-                  children: [
-                    DashboardCard(
-                        onTap: () {
-                          Navigator.of(context).pushNamed(AppRouter.offense);
-                        },
-                        textColor: const Color.fromRGBO(24, 110, 180, 1),
-                        color: Colors.blue.shade50,
-                        image: 'assets/images/list.png',
-                        text: 'Offense List'),
-                    DashboardCard(
+                    )
+                  : SizedBox(
+                      height: screenheight(context) * 0.22,
+                      child: const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    ),
+              buildindicator(sliderDataList ?? []),
+              Row(
+                children: [
+                  DashboardCard(
                       onTap: () {
-                        Navigator.push(context, _createRoute());
+                        Navigator.of(context).pushNamed(AppRouter.offense);
                       },
-                      // imagecolors: const Color.fromARGB(255, 197, 120, 4),
-                      color: Colors.orange.shade50,
-                      image: 'assets/images/checked.png',
-                      text: 'Traffic Sign Test',
-                      textColor: const Color.fromARGB(255, 197, 120, 4),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    DashboardCard(
-                      onTap: () {
-                        Navigator.of(context)
-                            .pushNamed(AppRouter.trafficeducation);
-                      },
-                      color: Colors.red.shade100,
-                      image: 'assets/images/warning.png',
-                      text: 'Traffic Education',
-                      textColor: const Color.fromARGB(255, 162, 44, 35),
-                    ),
-                    DashboardCard(
-                      onTap: () {
-                        Navigator.of(context).pushNamed(AppRouter.liscense);
-                      },
-                      imagecolors: Colors.teal,
-                      color: Colors.teal.shade100,
-                      image: 'assets/images/id-card.png',
-                      text: 'Liscense Procedure',
-                      textColor: Colors.teal,
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    DashboardCard(
-                      onTap: () {},
-                      color: Colors.green.shade100,
-                      image: 'assets/images/traffic-light.png',
-                      text: 'Traffic Status',
-                      textColor: const Color.fromARGB(255, 55, 139, 58),
-                    ),
-                    DashboardCard(
-                      imagecolors: const Color.fromARGB(255, 88, 110, 121),
-                      onTap: () {},
-                      color: Colors.blueGrey.shade100,
-                      image: 'assets/images/radio.png',
-                      text: 'Live Radio',
-                      textColor: const Color.fromARGB(255, 100, 124, 136),
-                    ),
-                  ],
-                )
-              ],
-            ),
+                      textColor: const Color.fromRGBO(24, 110, 180, 1),
+                      color: Colors.blue.shade50,
+                      image: 'assets/images/list.png',
+                      text: 'Offense List'),
+                  DashboardCard(
+                    onTap: () {
+                      Navigator.push(context, _createRoute());
+                    },
+                    // imagecolors: const Color.fromARGB(255, 197, 120, 4),
+                    color: Colors.orange.shade50,
+                    image: 'assets/images/checked.png',
+                    text: 'Traffic Sign Test',
+                    textColor: const Color.fromARGB(255, 197, 120, 4),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  DashboardCard(
+                    onTap: () {
+                      Navigator.of(context)
+                          .pushNamed(AppRouter.trafficeducation);
+                    },
+                    color: Colors.red.shade100,
+                    image: 'assets/images/warning.png',
+                    text: 'Traffic Education',
+                    textColor: const Color.fromARGB(255, 162, 44, 35),
+                  ),
+                  DashboardCard(
+                    onTap: () {
+                      Navigator.of(context).pushNamed(AppRouter.liscense);
+                    },
+                    imagecolors: Colors.teal,
+                    color: Colors.teal.shade100,
+                    image: 'assets/images/id-card.png',
+                    text: 'Liscense Procedure',
+                    textColor: Colors.teal,
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  DashboardCard(
+                    onTap: () {},
+                    color: Colors.green.shade100,
+                    image: 'assets/images/traffic-light.png',
+                    text: 'Traffic Status',
+                    textColor: const Color.fromARGB(255, 55, 139, 58),
+                  ),
+                  DashboardCard(
+                    imagecolors: const Color.fromARGB(255, 88, 110, 121),
+                    onTap: () {},
+                    color: Colors.blueGrey.shade100,
+                    image: 'assets/images/radio.png',
+                    text: 'Live Radio',
+                    textColor: const Color.fromARGB(255, 100, 124, 136),
+                  ),
+                ],
+              )
+            ],
           ),
         ),
       ),

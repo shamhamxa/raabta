@@ -13,20 +13,45 @@ class OffenseList extends StatefulWidget {
 }
 
 class _OffenseListState extends State<OffenseList> {
-  Future<OffenseModel> getData() async {
-    final response = await http.get(
-      Uri.parse('https://ptpkp.gov.pk/dashboard/api/services/offencelist'),
-    );
+  Future<Offense> getData() async {
+    final Map<String, dynamic> bodyMap = {
+      "TicketObject": null,
+      "TicketViolationsObject": null,
+      "AuthenticationObject": {
+        "UserName": 0,
+        "Password": 0,
+        "TokenNumber": "38BB1880-30DB-435F-A413-3D2DCA62EEB5",
+        "DeviceSerial": "",
+        "ApplicationVersion": 0.0,
+        "ApplicationName": "",
+        "APIVersion": 0.0,
+        "UserTypeID": 0,
+        "FcmToken": null
+      },
+      "ProductObject": {"ProductCode": "3", "ActionType": "1"},
+      "Input1": [],
+      "Input2": []
+    };
+    final bodyString = jsonEncode(bodyMap);
+    final response =
+        await http.post(Uri.parse('https://demokpservice.a2z.care/api/Process'),
+            headers: {
+              'Content-Type':
+                  'application/json', // Set the content type to JSON
+            },
+            body: bodyString);
 
     if (response.statusCode == 200) {
+      log('message');
       Map<String, dynamic> jsonMap = json.decode(response.body.toString());
-
-      OffenseModel offenseModel = OffenseModel.fromJson(jsonMap);
-      print("Message: ${offenseModel.message}");
-      print("Status: ${offenseModel.status}");
+      log('message');
+      Offense offenseModel = Offense.fromJson(jsonMap);
+      print("Message: ${offenseModel.responseObject.statusDetails}");
+      print("Status: ${offenseModel.responseObject.status}");
       print("Data:");
 
       log('valid');
+
       return offenseModel;
     } else {
       print('object');
@@ -51,10 +76,13 @@ class _OffenseListState extends State<OffenseList> {
             } else if (snapshot.hasError) {
               return Text('Error: ${snapshot.error}');
             }
+            final List<dynamic> offenseDataList =
+                jsonDecode(snapshot.data!.output);
             return ListView.builder(
-                itemCount: snapshot.data!.data!.length,
+                itemCount: offenseDataList.length,
                 itemBuilder: (context, index) {
-                  final offenseData = snapshot.data!.data![index];
+                  final Map<String, dynamic> offenseData =
+                      offenseDataList[index];
                   return Padding(
                     padding: const EdgeInsets.all(5),
                     child: Card(
@@ -75,7 +103,7 @@ class _OffenseListState extends State<OffenseList> {
                                   ),
                                 ),
                                 Text(
-                                  offenseData.offenceCodes.toString(),
+                                  offenseData['ViolationID'].toString(),
                                   style: TextStyle(
                                       color: Colors.grey.shade700,
                                       fontSize: 16,
@@ -91,7 +119,7 @@ class _OffenseListState extends State<OffenseList> {
                               children: [
                                 Expanded(
                                   child: Text(
-                                    offenseData.engTitle ?? '',
+                                    offenseData['eng_title'] ?? '',
                                     textAlign: TextAlign.start,
                                     style: const TextStyle(
                                         fontSize: 16,
@@ -100,13 +128,15 @@ class _OffenseListState extends State<OffenseList> {
                                 ),
                               ],
                             ),
-
+                            const SizedBox(
+                              height: 8,
+                            ),
                             Row(
                               // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Expanded(
                                   child: Text(
-                                    offenseData.urdTitle!,
+                                    offenseData['urd_title'],
                                     textAlign: TextAlign.end,
                                     style: const TextStyle(
                                         fontSize: 16,
@@ -115,7 +145,9 @@ class _OffenseListState extends State<OffenseList> {
                                 ),
                               ],
                             ),
-
+                            const SizedBox(
+                              height: 8,
+                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -128,7 +160,7 @@ class _OffenseListState extends State<OffenseList> {
                                       children: [
                                         const Text('MoterCycle : '),
                                         Text(
-                                          offenseData.motorCycle.toString(),
+                                          offenseData['MotorCycle'].toString(),
                                           style: const TextStyle(
                                               fontWeight: FontWeight.bold),
                                         ),
@@ -141,7 +173,7 @@ class _OffenseListState extends State<OffenseList> {
                                       children: [
                                         const Text('Car/Jeep : '),
                                         Text(
-                                          offenseData.carJeep.toString(),
+                                          offenseData['Car_Jeep'].toString(),
                                           textAlign: TextAlign.start,
                                           style: const TextStyle(
                                               fontWeight: FontWeight.bold),
@@ -160,7 +192,7 @@ class _OffenseListState extends State<OffenseList> {
                                       children: [
                                         const Text('PSV/LTV : '),
                                         Text(
-                                          offenseData.ltv.toString(),
+                                          offenseData['LTV'].toString(),
                                           style: const TextStyle(
                                               fontWeight: FontWeight.bold),
                                         ),
@@ -173,7 +205,7 @@ class _OffenseListState extends State<OffenseList> {
                                       children: [
                                         const Text('HTV : '),
                                         Text(
-                                          offenseData.psvHtv.toString(),
+                                          offenseData['PSV_HTV'].toString(),
                                           style: const TextStyle(
                                               fontWeight: FontWeight.bold),
                                         ),
