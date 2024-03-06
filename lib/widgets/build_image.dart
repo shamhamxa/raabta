@@ -43,7 +43,7 @@ Widget buildindicator(List strings) => Consumer<SliderController>(
           activeIndex: sliderController.activeIndex,
           count: strings.length,
           effect: JumpingDotEffect(
-            dotWidth: 14,
+            dotWidth: 24,
             dotColor: Colors.grey.shade300,
             activeDotColor: Theme.of(context).colorScheme.primary,
             dotHeight: 4,

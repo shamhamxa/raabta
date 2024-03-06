@@ -42,6 +42,10 @@ class MyNav extends StatelessWidget {
               color: Colors.white,
               height: 30,
             ),
+            const Icon(
+              Icons.car_rental,
+              color: Colors.white,
+            ),
           ],
         );
       },
