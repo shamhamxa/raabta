@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:raabta/model/challan_model.dart';
 import 'package:raabta/utils/media_query.dart';
+import 'package:raabta/widgets/app_button.dart';
 import 'package:raabta/widgets/side_bar.dart';
 
 class Challan extends StatefulWidget {
@@ -169,15 +170,31 @@ class _ChallanState extends State<Challan> {
                             if (challanModel!.responseObject!.status == false) {
                               // ignore: use_build_context_synchronously
                               return showDialog(
+                                barrierDismissible: false,
                                 context: context,
                                 builder: (context) {
                                   return AlertDialog(
-                                    content: Text(challanModel!
-                                        .responseObject!.statusDetails
-                                        .toString()),
-                                    title: Text(challanModel!
-                                        .responseObject!.status
-                                        .toString()),
+                                    content: Text(
+                                      challanModel!
+                                          .responseObject!.statusDetails
+                                          .toString(),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    title: Image.asset(
+                                      'assets/images/cross.png',
+                                      height: 80,
+                                    ),
+                                    actions: [
+                                      AppButton(
+                                          ontap: () {
+                                            Navigator.pop(context);
+                                          },
+                                          isEnable: true,
+                                          text: 'Retry',
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary)
+                                    ],
                                   );
                                 },
                               );

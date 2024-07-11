@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:http/http.dart' as http;
 import 'package:raabta/model/offense_model.dart';
 
@@ -78,6 +79,7 @@ class _OffenseListState extends State<OffenseList> {
             }
             final List<dynamic> offenseDataList =
                 jsonDecode(snapshot.data!.output);
+            log(offenseDataList.toString());
             return ListView.builder(
                 itemCount: offenseDataList.length,
                 itemBuilder: (context, index) {
@@ -220,7 +222,10 @@ class _OffenseListState extends State<OffenseList> {
                           ],
                         ),
                       ),
-                    ),
+                    )
+                        .animate()
+                        .slideX(delay: const Duration(milliseconds: 400))
+                        .fade(),
                   );
                 });
           },

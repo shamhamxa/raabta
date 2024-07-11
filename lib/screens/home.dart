@@ -20,9 +20,10 @@ class Home extends StatelessWidget {
           return PageStorage(
             bucket: provider.pageStorageBucket,
             child: PageView(
+              physics: const NeverScrollableScrollPhysics(),
               controller: provider.pageController,
               onPageChanged: (value) {
-                provider.changeindex(value);
+                // provider.changeindex(value);
                 log('page ${provider.currentIndex.toString()}');
               },
               children: const [

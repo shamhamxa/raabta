@@ -39,10 +39,10 @@ class RaabtaApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               theme: ThemeData(
                 brightness: Brightness.light,
-                colorScheme: const ColorScheme.light(
+                colorScheme: ColorScheme.light(
                   background: AppColor.white,
-                  primary: Color(0xff2382a1),
-                  secondary: Color.fromARGB(255, 194, 227, 237),
+                  primary: Colors.green.shade800,
+                  secondary: const Color.fromARGB(255, 194, 227, 237),
                 ),
                 textTheme:
                     GoogleFonts.nunitoTextTheme(Theme.of(context).textTheme),

@@ -211,7 +211,7 @@ class _SignTestState extends State<SignTest> {
         alignment: Alignment.topCenter,
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 80),
+            padding: const EdgeInsets.symmetric(vertical: 65),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

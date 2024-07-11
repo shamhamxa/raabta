@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:raabta/routes/route.dart';
 import 'package:raabta/utils/media_query.dart';
@@ -55,72 +57,189 @@ class SideBar extends StatelessWidget {
                 showDialog(
                     context: context,
                     builder: (context) {
-                      return AlertDialog(
-                        content: SizedBox(
-                          height: screenheight(context) * 0.2,
-                          child: Stack(
-                            clipBehavior: Clip.none,
-                            children: [
-                              Positioned(
-                                top: -45,
-                                right: 0,
-                                left: 0,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 80),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                          width: 4, color: Colors.white),
-                                      borderRadius: BorderRadius.circular(50),
-                                      color: Colors.green,
+                      return SizedBox(
+                        width: screenwidth(context) * 0.3,
+                        child: AlertDialog(
+                          surfaceTintColor: Colors.green,
+                          content: SizedBox(
+                            height: screenheight(context) * 0.38,
+                            child: Stack(
+                              clipBehavior: Clip.none,
+                              children: [
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    const SizedBox(
+                                      height: 20,
                                     ),
-                                    padding: const EdgeInsets.all(10),
-                                    child: const Center(
-                                      child: Icon(
-                                        Icons.done,
-                                        color: Colors.white,
+                                    const Text('Call 24/7'),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    RichText(
+                                      textAlign: TextAlign.center,
+                                      text: const TextSpan(children: [
+                                        TextSpan(
+                                            text:
+                                                'Traffic Updates Via SMS : Send PT to ',
+                                            style: TextStyle(
+                                                fontSize: 16,
+                                                color: Colors.black)),
+                                        TextSpan(
+                                            text: '8583',
+                                            style: TextStyle(
+                                                fontSize: 18,
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold)),
+                                      ]),
+                                    ),
+                                    const SizedBox(
+                                      height: 20,
+                                    ),
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(10),
+                                      child: BackdropFilter(
+                                        filter: ImageFilter.blur(
+                                            sigmaX: 30, sigmaY: 30),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                            color:
+                                                Colors.white.withOpacity(0.7),
+                                            border: Border.all(
+                                              color:
+                                                  Colors.white.withOpacity(0.7),
+                                            ),
+                                          ),
+                                          child: ListTile(
+                                            leading: Container(
+                                              padding: const EdgeInsets.all(10),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                                color: Theme.of(context)
+                                                    .colorScheme
+                                                    .primary,
+                                              ),
+                                              child: Image.asset(
+                                                'assets/images/telephone.png',
+                                                height: 25,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            title: const Text(
+                                                "DIG TRAFFIC POLICE"),
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                  ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(10),
+                                      child: BackdropFilter(
+                                        filter: ImageFilter.blur(
+                                            sigmaX: 30, sigmaY: 30),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                            color:
+                                                Colors.white.withOpacity(0.7),
+                                            border: Border.all(
+                                              color:
+                                                  Colors.white.withOpacity(0.7),
+                                            ),
+                                          ),
+                                          child: ListTile(
+                                            leading: Container(
+                                              padding: const EdgeInsets.all(10),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                                color: Theme.of(context)
+                                                    .colorScheme
+                                                    .primary,
+                                              ),
+                                              child: Image.asset(
+                                                'assets/images/telephone.png',
+                                                height: 25,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            title: const Text("HELP LINE"),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 15,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Container(
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                                color: Colors.white
+                                                    .withOpacity(0.4),
+                                                border: Border.all(
+                                                    width: 1,
+                                                    color: Colors.white)),
+                                            padding: const EdgeInsets.all(12),
+                                            child: Image.asset(
+                                              'assets/images/youtube.png',
+                                              height: 30,
+                                            )),
+                                        Container(
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                                color: Colors.white
+                                                    .withOpacity(0.4),
+                                                border: Border.all(
+                                                    width: 1,
+                                                    color: Colors.white)),
+                                            padding: const EdgeInsets.all(12),
+                                            child: Image.asset(
+                                              'assets/images/twitter.png',
+                                              height: 30,
+                                            )),
+                                        Container(
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                                color: Colors.white
+                                                    .withOpacity(0.4),
+                                                border: Border.all(
+                                                    width: 1,
+                                                    color: Colors.white)),
+                                            padding: const EdgeInsets.all(12),
+                                            child: Image.asset(
+                                              'assets/images/facebook.png',
+                                              height: 30,
+                                            )),
+                                      ],
+                                    ),
+                                  ],
                                 ),
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  const Text('Call 24/7'),
-                                  const Text(
-                                    'Traffic Updates Via SMS : Send PT to 8583',
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  SizedBox(
-                                    width: screenwidth(context),
-                                    child: ElevatedButton(
-                                        style: ElevatedButton.styleFrom(
-                                            // padding: const EdgeInsets.all(20)
-                                            ),
-                                        onPressed: () {},
-                                        child: const Text('data')),
-                                  ),
-                                  SizedBox(
-                                    width: screenwidth(context),
-                                    child: ElevatedButton(
-                                        style: ElevatedButton.styleFrom(
-                                            // padding: const EdgeInsets.all(20)
-                                            ),
-                                        onPressed: () {},
-                                        child: const Text('data')),
-                                  )
-                                ],
-                              )
-                            ],
+                                Positioned(
+                                    top: -65,
+                                    right: 0,
+                                    left: 0,
+                                    child: Image.asset(
+                                      'assets/images/check.png',
+                                      height: 80,
+                                    )),
+                              ],
+                            ),
                           ),
                         ),
-                        actions: [
-                          IconButton(
-                              onPressed: () {}, icon: const Icon(Icons.call))
-                        ],
                       );
                     });
               },
