@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 class DashboardCard extends StatelessWidget {
   const DashboardCard({
@@ -23,29 +24,43 @@ class DashboardCard extends StatelessWidget {
         onTap: onTap,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-          child: Container(
-            padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
+          child: Material(
+            elevation: 5,
+            borderRadius: BorderRadius.circular(10),
+            color: color,
+            child: Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: color,
-                border: Border.all(width: 1, color: Colors.white)),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  image,
-                  color: imagecolors,
-                  height: 60,
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                Text(
-                  text,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 15, color: textColor),
-                ),
-              ],
+                // border: Border.all(width: 0, color: Colors.white)
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    image,
+                    color: imagecolors,
+                    height: 60,
+                  )
+                      .animate()
+                      .slideX(delay: const Duration(milliseconds: 200))
+                      .fade(),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Text(
+                    text,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 15, color: textColor),
+                  )
+                      .animate()
+                      .slideX(
+                          delay: const Duration(milliseconds: 200),
+                          duration: const Duration(milliseconds: 200))
+                      .fade(),
+                ],
+              ),
             ),
           ),
         ),

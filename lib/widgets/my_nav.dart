@@ -30,7 +30,7 @@ class _MyNavState extends State<MyNav> with TickerProviderStateMixin {
 
     //// use "MotionTabBarController" to replace with "TabController", if you need to programmatically change the tab
     motionTabBarController = MotionTabBarController(
-      initialIndex: 1,
+      initialIndex: 0,
       length: 3,
       vsync: this,
     );
@@ -40,6 +40,20 @@ class _MyNavState extends State<MyNav> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Consumer<UIcontroller>(
       builder: (context, value, child) {
+        // motionTabBarController ??= MotionTabBarController(
+        //   initialIndex: value.currentIndex,
+        //   length: 3,
+        //   vsync: this,
+        // );
+        if (motionTabBarController != null) {
+          log('controller index${motionTabBarController!.index.toString()}');
+          log('current index${value.currentIndex}');
+          // Ensure the index is set only if motionTabBarController is not null
+          if (motionTabBarController!.index != value.currentIndex) {
+            log('Idher Ao');
+            motionTabBarController!.index = value.currentIndex;
+          }
+        }
         return MotionTabBar(
           controller: motionTabBarController,
           labels: const ["Dashboard", "Challan", "Vehicle"],
@@ -69,13 +83,19 @@ class _MyNavState extends State<MyNav> with TickerProviderStateMixin {
           tabBarColor: Colors.green.shade100,
           onTabItemSelected: (int index) {
             // _tabController!.index = value;
-            value.changeindex(index);
-            value.pageController.jumpToPage(index);
-            log('tab ${value.currentIndex.toString()}');
+            if (mounted) {
+              value.changeindex(index);
+              motionTabBarController!.index = index;
+              value.pageController.jumpToPage(index);
+              log('tab ${value.currentIndex.toString()}');
+            }
           },
 
           // padding: const EdgeInsets.all(10),
         );
+        // if (motionTabBarController != null) {
+        //   motionTabBarController!.index = value.currentIndex;
+        // }
       },
       // child:
     );

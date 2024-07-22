@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:raabta/model/license_model.dart';
 import 'package:raabta/utils/media_query.dart';
+import 'package:raabta/widgets/app_button.dart';
 import 'package:raabta/widgets/side_bar.dart';
 
 class VehicleLicense extends StatefulWidget {
@@ -23,7 +24,7 @@ class _VehicleLicenseState extends State<VehicleLicense> {
 
   Future<LicenseModel> getLicenseData() async {
     final response = await http.post(Uri.parse(
-        'https://ptpkp.gov.pk/api/api.aspx?key=GMSlzJPqDzGgx1OsBC7B5YYTNh27eL9d&search=1410137010071'));
+        'https://api.ptpkp.gov.pk/api.php?key=GMSlzJPqDzGgx1OsBC7B5YYTNh27eL9d&search=1410137010071'));
 
     if (response.statusCode == 200) {
       final jsonMap = json.decode(response.body.toString());
@@ -54,7 +55,8 @@ class _VehicleLicenseState extends State<VehicleLicense> {
       drawer: const SideBar(),
       appBar: AppBar(
         title: const Text(
-          'License Details',
+          'LICENSE DETAILS',
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: Colors.white,
@@ -76,10 +78,12 @@ class _VehicleLicenseState extends State<VehicleLicense> {
               const SizedBox(
                 height: 10,
               ),
-              Image.asset(
-                'assets/images/logo.png',
-                height: 120,
-              ),
+              licenseDataJson == null
+                  ? Image.asset(
+                      'assets/images/logo.png',
+                      height: 120,
+                    )
+                  : const SizedBox(),
               const SizedBox(
                 height: 20,
               ),
@@ -90,6 +94,12 @@ class _VehicleLicenseState extends State<VehicleLicense> {
                     child: SizedBox(
                       width: screenwidth(context) * 0.7,
                       child: TextFormField(
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'cannot be empty';
+                          }
+                          return null;
+                        },
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                             label: const Text(
@@ -136,24 +146,45 @@ class _VehicleLicenseState extends State<VehicleLicense> {
                                   Theme.of(context).colorScheme.primary,
                               foregroundColor: Colors.white),
                           onPressed: () async {
-                            setState(() {
-                              isloading = true;
-                            });
-                            await getLicenseData();
-                            setState(() {
-                              isloading = false;
-                            });
-                            if (licenseModel!.error != '0') {
-                              // ignore: use_build_context_synchronously
-                              return showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return AlertDialog(
-                                    content:
-                                        Text(licenseModel!.error!.toString()),
-                                  );
-                                },
-                              );
+                            if (formKey.currentState!.validate()) {
+                              setState(() {
+                                isloading = true;
+                              });
+                              await getLicenseData();
+                              setState(() {
+                                FocusScope.of(context).unfocus();
+                                isloading = false;
+                              });
+                              if (licenseModel!.error != '0') {
+                                // ignore: use_build_context_synchronously
+                                return showDialog(
+                                  barrierDismissible: false,
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      content: Text(
+                                        licenseModel!.error.toString(),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      title: Image.asset(
+                                        'assets/images/cross.png',
+                                        height: 80,
+                                      ),
+                                      actions: [
+                                        AppButton(
+                                            ontap: () {
+                                              Navigator.pop(context);
+                                            },
+                                            isEnable: true,
+                                            text: 'Retry',
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .primary)
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
                             }
                           },
                           child: const Icon(
@@ -175,13 +206,13 @@ class _VehicleLicenseState extends State<VehicleLicense> {
                                 horizontal: 10, vertical: 20),
                             child: Card(
                               elevation: 3,
-                              color: Colors.cyan.shade50,
+                              color: Colors.white,
                               // surfaceTintColor: Colors.transparent,
                               child: DataTable(
                                   dataRowMaxHeight: 50,
                                   columnSpacing: 40,
                                   decoration: const BoxDecoration(),
-                                  dividerThickness: 0.1,
+                                  dividerThickness: 0.001,
                                   columns: [
                                     const DataColumn(
                                       label: Text('Name'),

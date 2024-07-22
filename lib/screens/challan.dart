@@ -80,7 +80,8 @@ class _ChallanState extends State<Challan> {
       drawer: const SideBar(),
       appBar: AppBar(
         title: const Text(
-          'Challan Details',
+          'CHALLAN DETAILS',
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: Colors.white,
@@ -118,7 +119,7 @@ class _ChallanState extends State<Challan> {
                     child: SizedBox(
                       width: screenwidth(context) * 0.7,
                       child: TextFormField(
-                        keyboardType: TextInputType.number,
+                        keyboardType: const TextInputType.numberWithOptions(),
                         decoration: InputDecoration(
                             hintStyle: TextStyle(color: Colors.grey.shade400),
                             hintText: 'Enter challan token',
@@ -165,6 +166,7 @@ class _ChallanState extends State<Challan> {
                             });
                             await getChallanData(ticketID: challanController);
                             setState(() {
+                              FocusScope.of(context).unfocus();
                               isloading = false;
                             });
                             if (challanModel!.responseObject!.status == false) {
@@ -220,7 +222,7 @@ class _ChallanState extends State<Challan> {
                                 horizontal: 10, vertical: 20),
                             child: Card(
                               elevation: 3,
-                              color: Colors.cyan.shade50,
+                              color: Colors.green.shade50,
                               // surfaceTintColor: Colors.transparent,
                               child: DataTable(
                                   dataRowMaxHeight: 50,

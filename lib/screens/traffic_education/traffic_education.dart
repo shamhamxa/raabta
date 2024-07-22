@@ -17,7 +17,8 @@ class TrafficEducation extends StatefulWidget {
 
 class _TrafficEducationState extends State<TrafficEducation> {
   List<TrafficModel>? trafficDataList;
-  String baseUrl = 'https://ptpkp.gov.pk/dashboard/uploads/traffic-education/';
+  String baseUrl =
+      'https://raabta.ptpkp.gov.pk/dashboard/uploads/traffic-education/';
   List<String>? imageUrls;
   @override
   void initState() {
@@ -29,7 +30,7 @@ class _TrafficEducationState extends State<TrafficEducation> {
     try {
       final response = await http.get(
         Uri.parse(
-            'http://ptpkp.gov.pk/dashboard/traffic_education/getEducationSigns'),
+            'http://raabta.ptpkp.gov.pk/dashboard/traffic_education/getEducationSigns'),
       );
       if (response.statusCode == 200) {
         Map<String, dynamic> map = json.decode(response.body.toString());
@@ -97,7 +98,7 @@ class _TrafficEducationState extends State<TrafficEducation> {
                           decoration:
                               const BoxDecoration(shape: BoxShape.circle),
                           child: CachedNetworkImage(
-                            fit: BoxFit.fill,
+                            fit: BoxFit.cover,
                             cacheKey: imageUrls![index],
                             imageUrl: imageUrls![index],
                             placeholder: (context, url) => Container(

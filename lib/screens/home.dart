@@ -17,20 +17,35 @@ class Home extends StatelessWidget {
       bottomNavigationBar: const MyNav(),
       body: Consumer<UIcontroller>(
         builder: (context, provider, child) {
-          return PageStorage(
-            bucket: provider.pageStorageBucket,
-            child: PageView(
-              physics: const NeverScrollableScrollPhysics(),
-              controller: provider.pageController,
-              onPageChanged: (value) {
-                // provider.changeindex(value);
-                log('page ${provider.currentIndex.toString()}');
-              },
-              children: const [
-                Dashboard(),
-                Challan(),
-                VehicleLicense(),
-              ],
+          return WillPopScope(
+            onWillPop: () async {
+              log('this is executing');
+              if (provider.currentIndex != 0) {
+                // If not on the dashboard screen, navigate to the dashboard
+
+                provider.changeindex(0);
+
+                return false; // Prevent default back button behavior
+              } else {
+                // If on the dashboard screen, allow app to close
+                return true; // Allow default back button behavior
+              }
+            },
+            child: PageStorage(
+              bucket: provider.pageStorageBucket,
+              child: PageView(
+                physics: const NeverScrollableScrollPhysics(),
+                controller: provider.pageController,
+                onPageChanged: (value) {
+                  // provider.changeindex(value);
+                  log('page ${provider.currentIndex.toString()}');
+                },
+                children: const [
+                  Dashboard(),
+                  Challan(),
+                  VehicleLicense(),
+                ],
+              ),
             ),
           );
         },

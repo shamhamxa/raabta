@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:raabta/controller/map_permission.dart';
 import 'package:raabta/controller/score.dart';
 import 'package:raabta/controller/slider_controller.dart';
 import 'package:raabta/controller/ui_controller.dart';
@@ -32,6 +33,7 @@ class RaabtaApp extends StatelessWidget {
           ),
           ChangeNotifierProvider(create: (context) => SliderController()),
           ChangeNotifierProvider(create: (context) => TotalScore()),
+          ChangeNotifierProvider(create: (context) => GetPermissionLocation()),
         ],
         child: Consumer<ThemeProvider>(
           builder: (context, theme, child) {
@@ -41,7 +43,7 @@ class RaabtaApp extends StatelessWidget {
                 brightness: Brightness.light,
                 colorScheme: ColorScheme.light(
                   background: AppColor.white,
-                  primary: Colors.green.shade800,
+                  primary: Colors.green.shade900,
                   secondary: const Color.fromARGB(255, 194, 227, 237),
                 ),
                 textTheme:

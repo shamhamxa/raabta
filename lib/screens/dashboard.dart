@@ -4,12 +4,12 @@ import 'dart:ui';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import 'package:raabta/controller/slider_controller.dart';
 import 'package:raabta/model/slider_model.dart';
 import 'package:raabta/routes/route.dart';
+import 'package:raabta/screens/google_map.dart';
 import 'package:raabta/screens/traffic_sign_test/traffic_sign_test.dart';
 import 'package:raabta/utils/media_query.dart';
 import 'package:raabta/widgets/build_image.dart';
@@ -23,16 +23,20 @@ class Dashboard extends StatefulWidget {
   State<Dashboard> createState() => _DashboardState();
 }
 
-class _DashboardState extends State<Dashboard> {
+class _DashboardState extends State<Dashboard>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
   List<Data>? sliderDataList;
-  String baseUrl = 'https://ptpkp.gov.pk/dashboard/uploads/slider/';
+  String baseUrl = 'https://raabta.ptpkp.gov.pk/dashboard/uploads/slider/';
 
   Future<void> getSliderData() async {
     try {
       final response = await http.get(
-        Uri.parse('https://ptpkp.gov.pk/dashboard/api/services/sliders'),
+        Uri.parse('https://raabta.ptpkp.gov.pk/dashboard/api/services/sliders'),
       );
       if (response.statusCode == 200) {
+        log(response.body.toString());
         Map<String, dynamic> map = json.decode(response.body.toString());
         SliderModel sliderModel = SliderModel.fromJosn(map);
         setState(() {
@@ -56,6 +60,7 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         title: const Text(
           'R A A B T A',
           style: TextStyle(fontWeight: FontWeight.bold),
@@ -64,7 +69,7 @@ class _DashboardState extends State<Dashboard> {
         foregroundColor: Colors.white,
       ),
       drawer: const SideBar(),
-      backgroundColor: Colors.grey.shade100,
+      backgroundColor: Colors.grey.shade300,
       body: Stack(
         children: [
           Positioned(
@@ -78,7 +83,7 @@ class _DashboardState extends State<Dashboard> {
             ),
           ),
           BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
+            filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
             child: Container(
               color: Colors.transparent,
             ),
@@ -135,16 +140,13 @@ class _DashboardState extends State<Dashboard> {
                         Navigator.push(context, _createRoute());
                       },
                       // imagecolors: const Color.fromARGB(255, 197, 120, 4),
-                      color: Colors.white.withOpacity(0.7),
+                      color: Colors.white.withOpacity(0.5),
                       image: 'assets/images/checked.png',
                       text: 'Traffic Sign Test',
                       textColor: const Color.fromARGB(255, 197, 120, 4),
                     ),
                   ],
-                )
-                    .animate()
-                    .slideX(delay: const Duration(milliseconds: 400))
-                    .fade(),
+                ),
                 Row(
                   children: [
                     DashboardCard(
@@ -152,7 +154,7 @@ class _DashboardState extends State<Dashboard> {
                         Navigator.of(context)
                             .pushNamed(AppRouter.trafficeducation);
                       },
-                      color: Colors.white.withOpacity(0.7),
+                      color: Colors.white.withOpacity(0.5),
                       image: 'assets/images/warning.png',
                       text: 'Traffic Education',
                       textColor: const Color.fromARGB(255, 162, 44, 35),
@@ -162,21 +164,25 @@ class _DashboardState extends State<Dashboard> {
                         Navigator.of(context).pushNamed(AppRouter.liscense);
                       },
                       imagecolors: Colors.teal,
-                      color: Colors.white.withOpacity(0.7),
+                      color: Colors.white.withOpacity(0.5),
                       image: 'assets/images/id-card.png',
                       text: 'Liscense Procedure',
                       textColor: Colors.teal,
                     ),
                   ],
-                )
-                    .animate()
-                    .slideX(delay: const Duration(milliseconds: 450))
-                    .fade(),
+                ),
                 Row(
                   children: [
                     DashboardCard(
-                      onTap: () {},
-                      color: Colors.white.withOpacity(0.7),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const TrafficStatus(),
+                          ),
+                        );
+                      },
+                      color: Colors.white.withOpacity(0.5),
                       image: 'assets/images/traffic-light.png',
                       text: 'Traffic Status',
                       textColor: const Color.fromARGB(255, 55, 139, 58),
@@ -184,16 +190,13 @@ class _DashboardState extends State<Dashboard> {
                     DashboardCard(
                       imagecolors: const Color.fromARGB(255, 88, 110, 121),
                       onTap: () {},
-                      color: Colors.white.withOpacity(0.7),
+                      color: Colors.white.withOpacity(0.5),
                       image: 'assets/images/radio.png',
                       text: 'Live Radio',
                       textColor: const Color.fromARGB(255, 100, 124, 136),
                     ),
                   ],
-                )
-                    .animate()
-                    .slideX(delay: const Duration(milliseconds: 500))
-                    .fade(),
+                ),
               ],
             ),
           ),

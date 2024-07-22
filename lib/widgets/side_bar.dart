@@ -1,18 +1,26 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:raabta/controller/ui_controller.dart';
 import 'package:raabta/routes/route.dart';
 import 'package:raabta/utils/media_query.dart';
 import 'package:raabta/webview/website.dart';
 
-class SideBar extends StatelessWidget {
+class SideBar extends StatefulWidget {
   const SideBar({
     super.key,
   });
 
   @override
+  State<SideBar> createState() => _SideBarState();
+}
+
+class _SideBarState extends State<SideBar> {
+  @override
   Widget build(BuildContext context) {
     return Drawer(
+      width: screenwidth(context) * 0.6,
       // backgroundColor: Colors.white.shade300,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 60),
@@ -28,7 +36,10 @@ class SideBar extends StatelessWidget {
             ListTile(
               splashColor: Colors.blue.shade100,
               onTap: () {
-                Navigator.of(context).pushReplacementNamed(AppRouter.home);
+                if (mounted) {
+                  context.read<UIcontroller>().changeindex(0);
+                  Navigator.of(context).pushReplacementNamed(AppRouter.home);
+                }
               },
               leading: Image.asset(
                 'assets/images/home.png',
@@ -62,7 +73,7 @@ class SideBar extends StatelessWidget {
                         child: AlertDialog(
                           surfaceTintColor: Colors.green,
                           content: SizedBox(
-                            height: screenheight(context) * 0.38,
+                            height: screenheight(context) * 0.42,
                             child: Stack(
                               clipBehavior: Clip.none,
                               children: [
@@ -71,9 +82,15 @@ class SideBar extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     const SizedBox(
-                                      height: 20,
+                                      height: 10,
                                     ),
-                                    const Text('Call 24/7'),
+                                    const Text(
+                                      'Call 24/7',
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold),
+                                    ),
                                     const SizedBox(
                                       height: 10,
                                     ),
@@ -140,38 +157,33 @@ class SideBar extends StatelessWidget {
                                     ),
                                     ClipRRect(
                                       borderRadius: BorderRadius.circular(10),
-                                      child: BackdropFilter(
-                                        filter: ImageFilter.blur(
-                                            sigmaX: 30, sigmaY: 30),
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(10.0),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10.0),
+                                          color: Colors.white.withOpacity(0.7),
+                                          border: Border.all(
                                             color:
                                                 Colors.white.withOpacity(0.7),
-                                            border: Border.all(
-                                              color:
-                                                  Colors.white.withOpacity(0.7),
+                                          ),
+                                        ),
+                                        child: ListTile(
+                                          leading: Container(
+                                            padding: const EdgeInsets.all(10),
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .primary,
+                                            ),
+                                            child: Image.asset(
+                                              'assets/images/telephone.png',
+                                              height: 25,
+                                              color: Colors.white,
                                             ),
                                           ),
-                                          child: ListTile(
-                                            leading: Container(
-                                              padding: const EdgeInsets.all(10),
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                                color: Theme.of(context)
-                                                    .colorScheme
-                                                    .primary,
-                                              ),
-                                              child: Image.asset(
-                                                'assets/images/telephone.png',
-                                                height: 25,
-                                                color: Colors.white,
-                                              ),
-                                            ),
-                                            title: const Text("HELP LINE"),
-                                          ),
+                                          title: const Text("HELP LINE"),
                                         ),
                                       ),
                                     ),
@@ -228,14 +240,6 @@ class SideBar extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                Positioned(
-                                    top: -65,
-                                    right: 0,
-                                    left: 0,
-                                    child: Image.asset(
-                                      'assets/images/check.png',
-                                      height: 80,
-                                    )),
                               ],
                             ),
                           ),
@@ -245,7 +249,7 @@ class SideBar extends StatelessWidget {
               },
               leading: Image.asset(
                 'assets/images/telephone.png',
-                height: 30,
+                height: 25,
                 color: Theme.of(context).colorScheme.primary,
               ),
               title: const Text('Contact Us'),
