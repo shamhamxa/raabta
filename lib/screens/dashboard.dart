@@ -188,7 +188,7 @@ class _DashboardState extends State<Dashboard>
                               ),
                             );
                           },
-                          color: Colors.white.withOpacity(0.6),
+                          color: Colors.white.withOpacity(0.5),
                           image: 'assets/images/traffic-light.png',
                           text: 'Traffic Status',
                           textColor: const Color.fromARGB(255, 55, 139, 58),
