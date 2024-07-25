@@ -80,8 +80,8 @@ class _ChallanState extends State<Challan> {
       drawer: const SideBar(),
       appBar: AppBar(
         title: const Text(
-          'CHALLAN DETAILS',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          'CHALLAN VERIFICATION',
+          style: TextStyle(fontWeight: FontWeight.w400),
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: Colors.white,
@@ -117,8 +117,14 @@ class _ChallanState extends State<Challan> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: SizedBox(
-                      width: screenwidth(context) * 0.7,
+                      width: screenwidth(context) * 0.75,
                       child: TextFormField(
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Provide Valid Token';
+                          }
+                          return null;
+                        },
                         keyboardType: const TextInputType.numberWithOptions(),
                         decoration: InputDecoration(
                             hintStyle: TextStyle(color: Colors.grey.shade400),
@@ -161,45 +167,48 @@ class _ChallanState extends State<Challan> {
                                   Theme.of(context).colorScheme.primary,
                               foregroundColor: Colors.white),
                           onPressed: () async {
-                            setState(() {
-                              isloading = true;
-                            });
-                            await getChallanData(ticketID: challanController);
-                            setState(() {
-                              FocusScope.of(context).unfocus();
-                              isloading = false;
-                            });
-                            if (challanModel!.responseObject!.status == false) {
-                              // ignore: use_build_context_synchronously
-                              return showDialog(
-                                barrierDismissible: false,
-                                context: context,
-                                builder: (context) {
-                                  return AlertDialog(
-                                    content: Text(
-                                      challanModel!
-                                          .responseObject!.statusDetails
-                                          .toString(),
-                                      textAlign: TextAlign.center,
-                                    ),
-                                    title: Image.asset(
-                                      'assets/images/cross.png',
-                                      height: 80,
-                                    ),
-                                    actions: [
-                                      AppButton(
-                                          ontap: () {
-                                            Navigator.pop(context);
-                                          },
-                                          isEnable: true,
-                                          text: 'Retry',
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .primary)
-                                    ],
-                                  );
-                                },
-                              );
+                            if (formKey.currentState!.validate()) {
+                              setState(() {
+                                isloading = true;
+                              });
+                              await getChallanData(ticketID: challanController);
+                              setState(() {
+                                FocusScope.of(context).unfocus();
+                                isloading = false;
+                              });
+                              if (challanModel!.responseObject!.status ==
+                                  false) {
+                                // ignore: use_build_context_synchronously
+                                return showDialog(
+                                  barrierDismissible: false,
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      content: Text(
+                                        challanModel!
+                                            .responseObject!.statusDetails
+                                            .toString(),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      title: Image.asset(
+                                        'assets/images/cross.png',
+                                        height: 80,
+                                      ),
+                                      actions: [
+                                        AppButton(
+                                            ontap: () {
+                                              Navigator.pop(context);
+                                            },
+                                            isEnable: true,
+                                            text: 'Retry',
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .primary)
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
                             }
                           },
                           child: const Icon(

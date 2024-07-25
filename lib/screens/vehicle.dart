@@ -23,8 +23,11 @@ class _VehicleLicenseState extends State<VehicleLicense> {
   bool isloading = false;
 
   Future<LicenseModel> getLicenseData() async {
-    final response = await http.post(Uri.parse(
-        'https://api.ptpkp.gov.pk/api.php?key=GMSlzJPqDzGgx1OsBC7B5YYTNh27eL9d&search=1410137010071'));
+    final response = await http.post(
+      Uri.parse(
+        'https://api.ptpkp.gov.pk/api.php?key=GMSlzJPqDzGgx1OsBC7B5YYTNh27eL9d&search=${vehicleLicenseController.text.trim()}',
+      ),
+    );
 
     if (response.statusCode == 200) {
       final jsonMap = json.decode(response.body.toString());
@@ -55,8 +58,8 @@ class _VehicleLicenseState extends State<VehicleLicense> {
       drawer: const SideBar(),
       appBar: AppBar(
         title: const Text(
-          'LICENSE DETAILS',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          'LICENSE VERIFICATION',
+          style: TextStyle(fontWeight: FontWeight.w400),
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: Colors.white,
@@ -92,11 +95,11 @@ class _VehicleLicenseState extends State<VehicleLicense> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: SizedBox(
-                      width: screenwidth(context) * 0.7,
+                      width: screenwidth(context) * 0.75,
                       child: TextFormField(
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return 'cannot be empty';
+                            return 'Provide Valid CNIC';
                           }
                           return null;
                         },

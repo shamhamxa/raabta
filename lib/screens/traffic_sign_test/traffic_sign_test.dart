@@ -4,7 +4,6 @@ import 'package:raabta/screens/start_test_catagory/start_test_catagory.dart';
 import 'package:raabta/utils/media_query.dart';
 import 'package:raabta/widgets/license_test_widgets/license_test_card.dart';
 import 'package:raabta/widgets/license_test_widgets/traffic_test_top_card.dart';
-import 'package:raabta/widgets/side_bar.dart';
 
 class TrafficSignTest extends StatelessWidget {
   const TrafficSignTest({super.key});
@@ -18,7 +17,7 @@ class TrafficSignTest extends StatelessWidget {
       //   backgroundColor: Theme.of(context).colorScheme.primary,
       //   foregroundColor: Colors.white,
       // ),
-      drawer: const SideBar(),
+
       body: Column(
         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

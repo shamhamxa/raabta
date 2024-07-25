@@ -8,6 +8,7 @@ class LiscenseProcedure extends StatelessWidget {
   Widget build(BuildContext context) {
     final ScrollController scrollController = ScrollController();
     return Scaffold(
+      backgroundColor: Colors.grey.shade300,
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: Colors.white,
@@ -53,7 +54,7 @@ class LiscenseProcedure extends StatelessWidget {
                                       const Color.fromARGB(255, 240, 31, 16),
                                   textColor:
                                       const Color.fromARGB(255, 240, 31, 16),
-                                  color: Colors.red.shade100,
+                                  color: Colors.white,
                                   image: 'assets/images/card.png',
                                   text: 'Learner Permit'),
                               LiscenseCard(
@@ -65,7 +66,7 @@ class LiscenseProcedure extends StatelessWidget {
                                       const Color.fromARGB(255, 1, 104, 188),
                                   textColor:
                                       const Color.fromARGB(255, 1, 104, 188),
-                                  color: Colors.blue.shade100,
+                                  color: Colors.white,
                                   image: 'assets/images/card.png',
                                   text: 'Fresh Driving Liscense'),
                               LiscenseCard(
@@ -77,7 +78,7 @@ class LiscenseProcedure extends StatelessWidget {
                                       const Color.fromARGB(255, 25, 90, 27),
                                   textColor:
                                       const Color.fromARGB(255, 25, 90, 27),
-                                  color: Colors.green.shade100,
+                                  color: Colors.white,
                                   image: 'assets/images/card.png',
                                   text: 'Conversion Of Driving Liscense'),
                               LiscenseCard(
@@ -89,7 +90,7 @@ class LiscenseProcedure extends StatelessWidget {
                                       const Color.fromARGB(255, 2, 127, 115),
                                   textColor:
                                       const Color.fromARGB(255, 2, 98, 88),
-                                  color: Colors.teal.shade100,
+                                  color: Colors.white,
                                   image: 'assets/images/card.png',
                                   text: 'Dublicate Driving Liscense'),
                               LiscenseCard(
@@ -101,7 +102,7 @@ class LiscenseProcedure extends StatelessWidget {
                                       const Color.fromARGB(255, 110, 66, 49),
                                   textColor:
                                       const Color.fromARGB(255, 110, 66, 49),
-                                  color: Colors.brown.shade100,
+                                  color: Colors.white,
                                   image: 'assets/images/card.png',
                                   text: 'Endoresement Of Driving Liscense'),
                               LiscenseCard(
@@ -113,7 +114,7 @@ class LiscenseProcedure extends StatelessWidget {
                                       const Color.fromARGB(255, 3, 124, 140),
                                   textColor:
                                       const Color.fromARGB(255, 3, 124, 140),
-                                  color: Colors.cyan.shade100,
+                                  color: Colors.white,
                                   image: 'assets/images/card.png',
                                   text: 'Renewal Of Expired Driving Liscense'),
                               LiscenseCard(
@@ -125,7 +126,7 @@ class LiscenseProcedure extends StatelessWidget {
                                       const Color.fromARGB(255, 154, 28, 176),
                                   textColor:
                                       const Color.fromARGB(255, 154, 28, 176),
-                                  color: Colors.purple.shade100,
+                                  color: Colors.white,
                                   image: 'assets/images/card.png',
                                   text: 'International Driving Permit'),
                             ],
@@ -146,41 +147,39 @@ class LiscenseProcedure extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  Expanded(
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: LiscenseCard(
-                              onTap: () {
-                                Navigator.of(context)
-                                    .pushNamed(AppRouter.afghanlearnerpermit);
-                              },
-                              imageColor: Colors.indigo,
-                              textColor: Colors.indigo,
-                              color: Colors.indigo.shade100,
-                              image: 'assets/images/card.png',
-                              text: 'Learner Permit'),
-                        ),
-                        Expanded(
-                          child: LiscenseCard(
-                              onTap: () {
-                                Navigator.of(context)
-                                    .pushNamed(AppRouter.afghandrivinglicense);
-                              },
-                              imageColor: Colors.teal,
-                              textColor: Colors.teal,
-                              color: Colors.teal.shade100,
-                              image: 'assets/images/card.png',
-                              text: 'Driving Liscense'),
-                        ),
-                      ],
-                    ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: LiscenseCard(
+                            onTap: () {
+                              Navigator.of(context)
+                                  .pushNamed(AppRouter.afghanlearnerpermit);
+                            },
+                            imageColor: Colors.indigo,
+                            textColor: Colors.indigo,
+                            color: Colors.white,
+                            image: 'assets/images/card.png',
+                            text: 'Learner Permit'),
+                      ),
+                      Expanded(
+                        child: LiscenseCard(
+                            onTap: () {
+                              Navigator.of(context)
+                                  .pushNamed(AppRouter.afghandrivinglicense);
+                            },
+                            imageColor: Colors.teal,
+                            textColor: Colors.teal,
+                            color: Colors.white,
+                            image: 'assets/images/card.png',
+                            text: 'Driving Liscense'),
+                      ),
+                    ],
                   ),
                   const SizedBox(
                     height: 10,
                   ),
                   SizedBox(
-                    height: 40,
+                    height: 30,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 14),
                       child: Text(
@@ -207,7 +206,7 @@ class LiscenseProcedure extends StatelessWidget {
                               },
                               imageColor: Colors.purple,
                               textColor: Colors.purple,
-                              color: Colors.purple.shade100,
+                              color: Colors.white,
                               image: 'assets/images/card.png',
                               text: 'Learner Permit'),
                         ),
@@ -220,7 +219,7 @@ class LiscenseProcedure extends StatelessWidget {
                               imageColor:
                                   const Color.fromARGB(255, 199, 120, 1),
                               textColor: const Color.fromARGB(255, 199, 120, 1),
-                              color: Colors.orange.shade100,
+                              color: Colors.white,
                               image: 'assets/images/card.png',
                               text: 'Driving Liscense'),
                         ),

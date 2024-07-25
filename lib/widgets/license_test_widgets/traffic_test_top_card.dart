@@ -56,24 +56,27 @@ class TrafficSignTopContainer extends StatelessWidget {
                         fontSize: 22,
                         fontWeight: FontWeight.w500),
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      print('object');
-                      scaffoldKey.currentState!.openDrawer();
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.8),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      height: 40,
-                      width: 45,
-                      child: Icon(
-                        Icons.menu,
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
-                    ),
-                  ),
+                  // GestureDetector(
+                  //   onTap: () {
+                  //     print('object');
+                  //     scaffoldKey.currentState!.openDrawer();
+                  //   },
+                  //   child: Container(
+                  //     decoration: BoxDecoration(
+                  //       color: Colors.white.withOpacity(0.8),
+                  //       borderRadius: BorderRadius.circular(10),
+                  //     ),
+                  //     height: 40,
+                  //     width: 45,
+                  //     child: Icon(
+                  //       Icons.menu,
+                  //       color: Theme.of(context).colorScheme.primary,
+                  //     ),
+                  //   ),
+                  // ),
+                  const SizedBox(
+                    width: 35,
+                  )
                 ],
               ),
             ),

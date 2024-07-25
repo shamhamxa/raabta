@@ -56,7 +56,11 @@ class _MyNavState extends State<MyNav> with TickerProviderStateMixin {
         }
         return MotionTabBar(
           controller: motionTabBarController,
-          labels: const ["Dashboard", "Challan", "Vehicle"],
+          labels: const [
+            "Dashboard",
+            "Challan Verfication",
+            "Vehicle Verification"
+          ],
           icons: const [Icons.dashboard, Icons.token, Icons.car_crash],
           initialSelectedTab: "Dashboard",
           // selectedIndex: value.currentIndex,

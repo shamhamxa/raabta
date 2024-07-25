@@ -43,8 +43,8 @@ class _SideBarState extends State<SideBar> {
               },
               leading: Image.asset(
                 'assets/images/home.png',
-                height: 35,
-                color: Theme.of(context).colorScheme.primary,
+                height: 30,
+                color: Colors.green.shade800,
               ),
               title: const Text('Home'),
             ),
@@ -57,9 +57,9 @@ class _SideBarState extends State<SideBar> {
                         builder: (context) => const KPKTraffic()));
               },
               leading: Image.asset(
-                'assets/images/world.png',
+                'assets/images/global.png',
+                color: Colors.green.shade800,
                 height: 30,
-                color: Theme.of(context).colorScheme.primary,
               ),
               title: const Text('KP Website'),
             ),
@@ -248,9 +248,9 @@ class _SideBarState extends State<SideBar> {
                     });
               },
               leading: Image.asset(
-                'assets/images/telephone.png',
-                height: 25,
-                color: Theme.of(context).colorScheme.primary,
+                'assets/images/phone.png',
+                height: 35,
+                color: Colors.green.shade800,
               ),
               title: const Text('Contact Us'),
             ),

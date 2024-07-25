@@ -37,7 +37,7 @@ class _TrafficStatusState extends State<TrafficStatus> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Theme.of(context).colorScheme.primary,
-        foregroundColor: Theme.of(context).colorScheme.secondary,
+        foregroundColor: Colors.white,
         title: const Text(
           'TRAFFIC TRACKING',
           style: TextStyle(fontWeight: FontWeight.bold),
@@ -121,7 +121,7 @@ class _TrafficStatusState extends State<TrafficStatus> {
                       borderRadius: BorderRadius.circular(5),
                       color: Colors.yellow,
                     ),
-                    width: MediaQuery.of(context).size.width * 0.17,
+                    width: MediaQuery.of(context).size.width * 0.2,
                     height: 30,
                     child: const Center(child: Text('Moderate')),
                   ),

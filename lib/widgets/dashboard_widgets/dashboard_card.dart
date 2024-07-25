@@ -23,7 +23,7 @@ class DashboardCard extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap,
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
           child: Material(
             elevation: 5,
             borderRadius: BorderRadius.circular(10),
