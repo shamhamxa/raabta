@@ -27,6 +27,7 @@ class _DashboardState extends State<Dashboard>
     with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   List<Data>? sliderDataList;
   String baseUrl = 'https://raabta.ptpkp.gov.pk/dashboard/uploads/slider/';
 
@@ -59,6 +60,7 @@ class _DashboardState extends State<Dashboard>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         elevation: 0,
         title: const Text(
@@ -68,7 +70,10 @@ class _DashboardState extends State<Dashboard>
         backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: Colors.white,
       ),
-      drawer: const SideBar(),
+      drawer: Padding(
+        padding: EdgeInsets.only(top: screenheight(context) * 0.1),
+        child: const SideBar(),
+      ),
       backgroundColor: Colors.grey.shade300,
       body: Stack(
         children: [
@@ -141,7 +146,11 @@ class _DashboardState extends State<Dashboard>
                           text: 'Offense List'),
                       DashboardCard(
                         onTap: () {
-                          Navigator.push(context, _createRoute());
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const TrafficSignTest()));
                         },
                         // imagecolors: const Color.fromARGB(255, 197, 120, 4),
                         color: Colors.white.withOpacity(0.6),
@@ -188,7 +197,7 @@ class _DashboardState extends State<Dashboard>
                               ),
                             );
                           },
-                          color: Colors.white.withOpacity(0.5),
+                          color: Colors.white.withOpacity(0.6),
                           image: 'assets/images/traffic-light.png',
                           text: 'Traffic Status',
                           textColor: const Color.fromARGB(255, 55, 139, 58),
@@ -213,24 +222,24 @@ class _DashboardState extends State<Dashboard>
     );
   }
 
-  Route _createRoute() {
-    return PageRouteBuilder(
-      transitionDuration: const Duration(milliseconds: 600),
-      pageBuilder: (context, animation, secondaryAnimation) =>
-          const TrafficSignTest(),
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        var begin = const Offset(0, -1.0);
-        var end = Offset.zero;
-        var curve = Curves.ease;
+  // Route _createRoute() {
+  //   return PageRouteBuilder(
+  //     transitionDuration: const Duration(milliseconds: 600),
+  //     pageBuilder: (context, animation, secondaryAnimation) =>
+  //         const TrafficSignTest(),
+  //     transitionsBuilder: (context, animation, secondaryAnimation, child) {
+  //       var begin = const Offset(0, -1.0);
+  //       var end = Offset.zero;
+  //       var curve = Curves.ease;
 
-        var tween =
-            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+  //       var tween =
+  //           Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
-        return SlideTransition(
-          position: animation.drive(tween),
-          child: child,
-        );
-      },
-    );
-  }
+  //       return SlideTransition(
+  //         position: animation.drive(tween),
+  //         child: child,
+  //       );
+  //     },
+  //   );
+  // }
 }

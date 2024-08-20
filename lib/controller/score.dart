@@ -1,16 +1,27 @@
 import 'package:flutter/material.dart';
 
+class ScoreDate {
+  final int score;
+  final DateTime date;
+
+  ScoreDate({required this.score, required this.date});
+}
+
 class TotalScore extends ChangeNotifier {
   int score = 0;
-  List<int> scoresList = [];
-  void updateScore(int num) {
-    score = num;
+  String text = '';
+  List<ScoreDate> scoresList = [];
+
+  void addScoreToList(ScoreDate scoreToAdd) {
+    scoresList.add(scoreToAdd);
     notifyListeners();
-    addScoreToList(score);
   }
 
-  void addScoreToList(int scoreToAdd) {
-    scoresList.add(scoreToAdd);
+// Update usage in updateScore
+  updateScore(int num) {
+    score = num;
+
+    addScoreToList(ScoreDate(score: score, date: DateTime.now()));
     notifyListeners();
   }
 

@@ -21,7 +21,7 @@ class StartTestCatagory extends StatelessWidget {
       body: Column(
         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          TrafficSignTopContainer(scaffoldKey: scaffoldKey, text: 'Start Test'),
+          TrafficSignTopContainer(scaffoldKey: scaffoldKey, text: 'START TEST'),
           SizedBox(
             height: screenheight(context) * 0.04,
           ),

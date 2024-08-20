@@ -60,6 +60,7 @@ class _KPKTrafficState extends State<KPKTraffic> {
                         //     'document.getElementById("printSlip").innerHTML=""');
                       },
                       onPageFinished: (url) {
+                        log('message');
                         setState(() {
                           isLoading = false;
                         });

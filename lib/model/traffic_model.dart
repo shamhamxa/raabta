@@ -14,9 +14,7 @@ class Traffic {
       message: json['message'],
       status: json['status'],
       traffic: List<TrafficModel>.from(
-        json['data'].map(
-          (e) => TrafficModel.fromJson(e),
-        ),
+        json['data'].map((e) => TrafficModel.fromJson(e)),
       ),
     );
   }

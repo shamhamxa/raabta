@@ -2,7 +2,9 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:raabta/model/license_model.dart';
 import 'package:raabta/utils/media_query.dart';
 import 'package:raabta/widgets/app_button.dart';
@@ -52,6 +54,10 @@ class _VehicleLicenseState extends State<VehicleLicense> {
     }
   }
 
+  var maskFormatter = MaskTextInputFormatter(
+    mask: '#####-#######-#',
+    filter: {"#": RegExp(r'[0-9]')},
+  );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,6 +103,12 @@ class _VehicleLicenseState extends State<VehicleLicense> {
                     child: SizedBox(
                       width: screenwidth(context) * 0.75,
                       child: TextFormField(
+                        inputFormatters: [
+                          FilteringTextInputFormatter.allow(
+                            RegExp(r'[a-zA-Z0-9]'),
+                          ),
+                        ],
+                        maxLength: 13,
                         validator: (value) {
                           if (value!.isEmpty) {
                             return 'Provide Valid CNIC';
@@ -157,6 +169,7 @@ class _VehicleLicenseState extends State<VehicleLicense> {
                               setState(() {
                                 FocusScope.of(context).unfocus();
                                 isloading = false;
+                                vehicleLicenseController.clear();
                               });
                               if (licenseModel!.error != '0') {
                                 // ignore: use_build_context_synchronously
@@ -208,118 +221,12 @@ class _VehicleLicenseState extends State<VehicleLicense> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 10, vertical: 20),
                             child: Card(
-                              elevation: 3,
-                              color: Colors.white,
-                              // surfaceTintColor: Colors.transparent,
-                              child: DataTable(
-                                  dataRowMaxHeight: 50,
-                                  columnSpacing: 40,
-                                  decoration: const BoxDecoration(),
-                                  dividerThickness: 0.001,
-                                  columns: [
-                                    const DataColumn(
-                                      label: Text('Name'),
-                                    ),
-                                    DataColumn(
-                                      label: Text(licenseDataJson!['name']),
-                                    ),
-                                  ],
-                                  rows: [
-                                    DataRow(
-                                      cells: [
-                                        const DataCell(
-                                          Text('CNIC'),
-                                        ),
-                                        DataCell(
-                                          Text(licenseDataJson!['nic']),
-                                        ),
-                                      ],
-                                    ),
-                                    DataRow(
-                                      cells: [
-                                        const DataCell(
-                                          Text('Father Name'),
-                                        ),
-                                        DataCell(
-                                          Text(licenseDataJson!['father_name']),
-                                        ),
-                                      ],
-                                    ),
-                                    DataRow(
-                                      cells: [
-                                        const DataCell(
-                                          Text('License No'),
-                                        ),
-                                        DataCell(
-                                          Text(licenseDataJson!['license_no']),
-                                        ),
-                                      ],
-                                    ),
-                                    DataRow(
-                                      cells: [
-                                        const DataCell(
-                                          Text('License Type'),
-                                        ),
-                                        DataCell(
-                                          Text(
-                                              licenseDataJson!['license_type']),
-                                        ),
-                                      ],
-                                    ),
-                                    DataRow(
-                                      cells: [
-                                        const DataCell(
-                                          Text('Initial Type'),
-                                        ),
-                                        DataCell(
-                                          Text(
-                                              licenseDataJson!['initial_type']),
-                                        ),
-                                      ],
-                                    ),
-                                    DataRow(
-                                      cells: [
-                                        const DataCell(
-                                          Text('Initial Issue Date'),
-                                        ),
-                                        DataCell(
-                                          Text(licenseDataJson![
-                                              'initial_issue_date']),
-                                        ),
-                                      ],
-                                    ),
-                                    DataRow(
-                                      cells: [
-                                        const DataCell(
-                                          Text('Issue Date'),
-                                        ),
-                                        DataCell(
-                                          Text(licenseDataJson!['issue_date']),
-                                        ),
-                                      ],
-                                    ),
-                                    DataRow(
-                                      cells: [
-                                        const DataCell(
-                                          Text('Expiry Date'),
-                                        ),
-                                        DataCell(
-                                          Text(licenseDataJson!['expiry_date']),
-                                        ),
-                                      ],
-                                    ),
-                                    DataRow(
-                                      cells: [
-                                        const DataCell(
-                                          Text('District'),
-                                        ),
-                                        DataCell(
-                                          Text(licenseDataJson!['district']),
-                                        ),
-                                      ],
-                                    ),
-                                  ]),
-                            ),
+                                elevation: 3,
+                                color: Colors.white,
+                                // surfaceTintColor: Colors.transparent,
+                                child: VehicleTable(
+                                  vehicle: licenseDataJson,
+                                )),
                           );
                         },
                       ),
@@ -330,5 +237,114 @@ class _VehicleLicenseState extends State<VehicleLicense> {
         ),
       ),
     );
+  }
+}
+
+class VehicleTable extends StatelessWidget {
+  final Map<String, dynamic>? vehicle;
+
+  const VehicleTable({super.key, this.vehicle});
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(10),
+      child: DataTable(
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(50)),
+        headingRowColor: MaterialStatePropertyAll(Colors.green.shade800),
+        dataRowMaxHeight: 50,
+        columnSpacing: 40,
+        dividerThickness: 0.01,
+        columns: [
+          const DataColumn(
+            label: Text(
+              'Name',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+          DataColumn(
+            label: Text(
+              vehicle != null ? vehicle!['name'].toString() : '',
+              style: const TextStyle(color: Colors.white),
+            ),
+          ),
+        ],
+        rows: List<DataRow>.generate(
+          7, // Number of rows
+          (index) {
+            // Determine if the row index is even or odd for color purposes
+            final isEvenRow = index % 2 == 0;
+
+            // Define alternating row colors
+            final rowColor = isEvenRow ? Colors.grey.shade200 : Colors.white;
+
+            return DataRow(
+              color: MaterialStateProperty.resolveWith<Color?>(
+                (Set<MaterialState> states) => rowColor,
+              ),
+              cells: [
+                DataCell(
+                  Text(
+                    _getLabel(index),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                DataCell(
+                  Text(_getValue(index)),
+                ),
+              ],
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  String _getLabel(int index) {
+    // Return the appropriate label based on row index
+    switch (index) {
+      case 0:
+        return 'Father Name';
+      case 1:
+        return 'CNIC';
+      case 2:
+        return 'License Number';
+      case 3:
+        return 'License Type';
+      case 4:
+        return 'Initial Issue Date';
+      case 5:
+        return 'Expiry Date';
+      case 6:
+        return 'District';
+
+      default:
+        return '';
+    }
+  }
+
+  String _getValue(int index) {
+    // Return the appropriate value based on row index
+    switch (index) {
+      case 0:
+        return vehicle != null ? vehicle!['father_name'].toString() : '';
+      case 1:
+        return vehicle != null ? vehicle!['nic'].toString() : '';
+      case 2:
+        return vehicle != null ? vehicle!['license_no'] : '';
+      case 3:
+        return vehicle != null ? vehicle!['license_type'] : '';
+      case 4:
+        if (vehicle != null && vehicle!['initial_issue_date'] != null) {
+          return vehicle!['initial_issue_date'];
+        }
+        return '';
+      case 5:
+        return vehicle != null ? vehicle!['expiry_date'] : '';
+      case 6:
+        return vehicle != null ? vehicle!['district'] : '';
+      default:
+        return '';
+    }
   }
 }

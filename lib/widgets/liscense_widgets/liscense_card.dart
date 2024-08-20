@@ -22,14 +22,14 @@ class LiscenseCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
         child: Card(
           elevation: 5,
           // color: Colors.blue.shade100,
 
           color: color,
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 10),
+            padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 5),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -42,7 +42,7 @@ class LiscenseCard extends StatelessWidget {
                   height: 5,
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Text(
                     text,
                     textAlign: TextAlign.center,

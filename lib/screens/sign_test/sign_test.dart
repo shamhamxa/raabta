@@ -33,26 +33,26 @@ class _SignTestState extends State<SignTest> {
       ConfettiController(duration: const Duration(seconds: 3));
 
   final List<Map<String, dynamic>> questions = [
-    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/1.png'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/1.jpeg'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/2.jpeg'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/3.jpeg'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/4.jpeg'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/5.jpeg'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/6.jpeg'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/7.jpeg'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/7.jpeg'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/8.jpeg'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/9.jpeg'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/10.jpeg'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/11.jpeg'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/12.jpeg'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/13.jpeg'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/14.jpeg'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/15.jpeg'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/16.jpeg'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/17.jpeg'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/18.jpeg'},
+    {'question': 'What does this sign mean?', 'image': 'assets/images/19.jpeg'},
     // 'What does this sign mean?',
     // 'What does this sign mean?',
     // 'What does this sign mean?',
@@ -75,8 +75,8 @@ class _SignTestState extends State<SignTest> {
   ];
   final List<List<String>> optionsList = [
     [
-      'No right Turn',
       'Left stop',
+      'No Right Turn',
       'Right Turn',
     ],
     [
@@ -176,32 +176,85 @@ class _SignTestState extends State<SignTest> {
     ],
   ];
   final List<String> correctAnswers = [
-    'Right Turn',
+    'No Right Turn',
     'Strong cross wing',
     'Custom police Ahead',
     'No entry for vehicle Exceeding 6 ton weight on Axle',
-    'Lines',
+    'Stop Line',
     'No Parking',
     'End of speed Limit Imposed',
-    'Speed Limit 50km',
+    'End of speed Limit Imposed',
     'Other Dangers',
-    'Cattle Crossing',
-    'Hospital',
+    'Wild Animal Crossing',
+    'First Aid Centre',
     'Bus stop',
-    'No entry',
-    'Slippery Road',
+    'No entry for M. Cycle',
+    'Road Dips',
     'Steep Ascent',
-    'Level Crossing (with Gate)',
-    'Children Crossing',
-    'Hand',
-    'Stop Ahead',
+    'Level Crossing (without Gate)',
+    'Pedestrian Crossing',
+    'Stop',
+    'Slow',
     'Road is Closed Ahead',
+    // 'One Way Road',
+    // 'Parking Place Indicated',
+    // 'Facility indicated',
+    // 'No Entry for Motor Vehicle',
+    // 'No Entry for Cycle',
+    // 'Dual Carriage Way Ahead',
+    // 'Do Not Know',
+    // 'Give Way',
+    // 'Junction Box',
+    // 'No U-Turn',
+    // 'No Entry',
+    // 'No Left Turn',
+    // 'Low Flying Craft',
+    // 'Triangle',
+    // 'Dangerous Descent',
+    // 'Danger Ahead',
+    // 'turn Left',
+    // 'Overtaking By Goods Vehicles Prohibited',
+    // 'No Entry fir Vehicles Exceeding 10 meter in length',
+    // 'Double Bend on the Road',
+    // 'Filling Station',
+    // 'No Entry for Animal Drawn Vehicles',
+    // 'No Entry for Agriculture Vehicle',
+    // 'Two Way Traffic Crosses One Way Road',
+    // 'Draw Bridge',
+    // 'Centre Line No Overtaking Zone',
+    // 'Overtaking Not Allowed',
+    // 'Telephone Facility',
+    // 'No Entry for Goods Vehicle',
+    // 'No Entry for Pedestrian',
+    // 'End of Prohibition of Overtaking',
+    // 'Turn to the Left',
+    // 'Go Straight Ahead',
+    // 'Soft Verges',
+    // 'Road Works',
+    // 'Parking',
+    // 'Hospital',
+    // 'Rectangle',
+    // 'Give Way to the Traffic Appraoching From Right Side',
+    // 'After 100 M Motor Way Exit',
+    // 'After 200 M Motor Way Exit',
+    // 'After 300 M Motor Way Exit',
+    // 'Start of Motor Way',
+    // 'End of Motor Way',
+    // 'No Horn',
+    // 'Cross Roads Give Way to the Traffic Coming From Right Side',
+    // 'National Speed Limit Applies',
+    // 'Stop Line',
+    // 'Give Way',
+    // 'Level Crossing With Gate',
+    // 'Lose Gravel',
+    // 'Restaurant',
+    // 'Sharp Deviation of Route Left',
+    // 'No',
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.indigo.shade50,
       appBar: AppBar(
         title: const Text('T E S T'),
         backgroundColor: Theme.of(context).colorScheme.primary,
@@ -211,7 +264,7 @@ class _SignTestState extends State<SignTest> {
         alignment: Alignment.topCenter,
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 65),
+            padding: const EdgeInsets.symmetric(vertical: 45),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -229,7 +282,8 @@ class _SignTestState extends State<SignTest> {
                           percent: percent.clamp(0.0, 1.0),
                           circularStrokeCap: CircularStrokeCap.round,
                           center:
-                              Text('${(percent * 100).toStringAsFixed(0)} %'),
+                              // Text('${(percent * 100).toStringAsFixed(0)} %'),
+                              const Text(''),
                         ),
                       )
                     : const Center(child: Text('Completed')),
@@ -251,8 +305,8 @@ class _SignTestState extends State<SignTest> {
                     currentQuestionIndex == questions.length
                         ? const Text('')
                         : Image.asset(
-                            'assets/images/1.png',
-                            height: 70,
+                            questions[point]['image'],
+                            height: 100,
                           ),
                     const SizedBox(
                       height: 15,
@@ -371,16 +425,28 @@ class _SignTestState extends State<SignTest> {
                           });
                           // ignore: use_build_context_synchronously
                           showDialog(
+                            barrierDismissible: false,
                             context: context,
                             builder: (context) {
                               return AlertDialog.adaptive(
-                                title: const Text('Total Score'),
+                                title: const Center(child: Text('RESULT')),
                                 content: Column(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
+                                    Text('Correct Answers : $score'),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text('Wrong Answers : ${20 - score}'),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
                                     Text(
-                                      score.toString(),
-                                      style: const TextStyle(fontSize: 18),
+                                      'Obtained Score is : ${score.toString()} / ${questions.length}',
+                                      style: const TextStyle(fontSize: 14),
+                                    ),
+                                    const SizedBox(
+                                      height: 5,
                                     ),
                                     if (score < 10)
                                       const Column(
@@ -409,9 +475,15 @@ class _SignTestState extends State<SignTest> {
                                   ],
                                 ),
                                 actions: [
-                                  IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(Icons.done))
+                                  AppButton(
+                                      ontap: () {
+                                        // Navigator.pop(context);
+                                        Navigator.pop(context);
+                                      },
+                                      isEnable: true,
+                                      text: 'Done',
+                                      color:
+                                          Theme.of(context).colorScheme.primary)
                                 ],
                               );
                             },

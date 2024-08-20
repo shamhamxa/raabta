@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:raabta/model/challan_model.dart';
 import 'package:raabta/utils/media_query.dart';
@@ -77,7 +78,10 @@ class _ChallanState extends State<Challan> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const SideBar(),
+      drawer: Padding(
+        padding: EdgeInsets.only(top: screenheight(context) * 0.1),
+        child: const SideBar(),
+      ),
       appBar: AppBar(
         title: const Text(
           'CHALLAN VERIFICATION',
@@ -119,10 +123,21 @@ class _ChallanState extends State<Challan> {
                     child: SizedBox(
                       width: screenwidth(context) * 0.75,
                       child: TextFormField(
+                        maxLength: 10,
+                        inputFormatters: [
+                          FilteringTextInputFormatter.allow(
+                            RegExp(r'[a-zA-Z0-9]'),
+                          )
+                        ],
                         validator: (value) {
+                          // final RegExp specialCharPattern =
+                          //     RegExp(r'[!@#\$&*~,.]');
                           if (value!.isEmpty) {
                             return 'Provide Valid Token';
                           }
+                          // if (specialCharPattern.hasMatch(value)) {
+                          //   return 'Token must contain at least one special character';
+                          // }
                           return null;
                         },
                         keyboardType: const TextInputType.numberWithOptions(),
@@ -136,7 +151,7 @@ class _ChallanState extends State<Challan> {
                             enabled: true,
                             enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                    width: 1,
+                                    width: 1.5,
                                     color:
                                         Theme.of(context).colorScheme.primary)),
                             border: OutlineInputBorder(
@@ -175,6 +190,7 @@ class _ChallanState extends State<Challan> {
                               setState(() {
                                 FocusScope.of(context).unfocus();
                                 isloading = false;
+                                challanController.clear();
                               });
                               if (challanModel!.responseObject!.status ==
                                   false) {
@@ -230,113 +246,12 @@ class _ChallanState extends State<Challan> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 10, vertical: 20),
                             child: Card(
-                              elevation: 3,
-                              color: Colors.green.shade50,
-                              // surfaceTintColor: Colors.transparent,
-                              child: DataTable(
-                                  dataRowMaxHeight: 50,
-                                  columnSpacing: 40,
-                                  decoration: const BoxDecoration(),
-                                  dividerThickness: 0.1,
-                                  columns: [
-                                    const DataColumn(
-                                      label: Text('Name'),
-                                    ),
-                                    DataColumn(
-                                      label: Text(ticket != null
-                                          ? ticket['OffenderName'].toString()
-                                          : ''),
-                                    ),
-                                  ],
-                                  rows: [
-                                    DataRow(
-                                      cells: [
-                                        const DataCell(
-                                          Text('Ticket ID'),
-                                        ),
-                                        DataCell(
-                                          Text(ticket != null
-                                              ? ticket['TicketID'].toString()
-                                              : ''),
-                                        ),
-                                      ],
-                                    ),
-                                    DataRow(
-                                      cells: [
-                                        const DataCell(
-                                          Text('TO Name'),
-                                        ),
-                                        DataCell(
-                                          Text(ticket != null
-                                              ? ticket['TOName'].toString()
-                                              : ''),
-                                        ),
-                                      ],
-                                    ),
-                                    DataRow(
-                                      cells: [
-                                        const DataCell(
-                                          Text('Ticket No'),
-                                        ),
-                                        DataCell(
-                                          Text(ticket != null
-                                              ? ticket['TicketNo'].toString()
-                                              : ''),
-                                        ),
-                                      ],
-                                    ),
-                                    DataRow(
-                                      cells: [
-                                        const DataCell(
-                                          Text('Document Number'),
-                                        ),
-                                        DataCell(
-                                          Text(ticket['DocumentNumber']),
-                                        ),
-                                      ],
-                                    ),
-                                    DataRow(
-                                      cells: [
-                                        const DataCell(
-                                          Text('District Name'),
-                                        ),
-                                        DataCell(
-                                          Text(ticket['DistrictName']),
-                                        ),
-                                      ],
-                                    ),
-                                    DataRow(
-                                      cells: [
-                                        const DataCell(
-                                          Text('Issuance Date Time'),
-                                        ),
-                                        DataCell(
-                                          Text(ticket['IssuanceDateTime']),
-                                        ),
-                                      ],
-                                    ),
-                                    DataRow(
-                                      cells: [
-                                        const DataCell(
-                                          Text('Info Message'),
-                                        ),
-                                        DataCell(
-                                          Text(ticket['InfoMessage']),
-                                        ),
-                                      ],
-                                    ),
-                                    DataRow(
-                                      cells: [
-                                        const DataCell(
-                                          Text('Ticket Status'),
-                                        ),
-                                        DataCell(
-                                          Text(ticket['TicketStatus']),
-                                        ),
-                                      ],
-                                    ),
-                                  ]),
-                            ),
+                                elevation: 4,
+                                color: Colors.green.shade50,
+                                // surfaceTintColor: Colors.transparent,
+                                child: TicketTable(
+                                  ticket: ticket,
+                                )),
                           );
                         },
                       ),
@@ -347,5 +262,122 @@ class _ChallanState extends State<Challan> {
         ),
       ),
     );
+  }
+}
+
+class TicketTable extends StatelessWidget {
+  final Map<String, dynamic>? ticket;
+
+  const TicketTable({super.key, this.ticket});
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(10),
+      child: DataTable(
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(50)),
+        headingRowColor: MaterialStatePropertyAll(Colors.green.shade800),
+        dataRowMaxHeight: 50,
+        columnSpacing: 40,
+        dividerThickness: 0.01,
+        columns: [
+          const DataColumn(
+            label: Text(
+              'Name',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+          DataColumn(
+            label: Text(
+              ticket != null ? ticket!['OffenderName'].toString() : '',
+              style: const TextStyle(color: Colors.white),
+            ),
+          ),
+        ],
+        rows: List<DataRow>.generate(
+          7, // Number of rows
+          (index) {
+            // Determine if the row index is even or odd for color purposes
+            final isEvenRow = index % 2 == 0;
+
+            // Define alternating row colors
+            final rowColor = isEvenRow ? Colors.grey.shade200 : Colors.white;
+
+            return DataRow(
+              color: MaterialStateProperty.resolveWith<Color?>(
+                (Set<MaterialState> states) => rowColor,
+              ),
+              cells: [
+                DataCell(
+                  Text(
+                    _getLabel(index),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                DataCell(
+                  Text(_getValue(index)),
+                ),
+              ],
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  String _getLabel(int index) {
+    // Return the appropriate label based on row index
+    switch (index) {
+      case 0:
+        return 'TO Name';
+      case 1:
+        return 'Ticket No';
+      case 2:
+        return 'Document Number';
+      case 3:
+        return 'District Name';
+      case 4:
+        return 'Issuance Date Time';
+      case 5:
+        return 'Info Message';
+      case 6:
+        return 'Ticket Status';
+      default:
+        return '';
+    }
+  }
+
+  String _getValue(int index) {
+    // Return the appropriate value based on row index
+    switch (index) {
+      case 0:
+        return ticket != null ? ticket!['TOName'].toString() : '';
+      case 1:
+        return ticket != null ? ticket!['TicketNo'].toString() : '';
+      case 2:
+        return ticket != null ? ticket!['DocumentNumber'] : '';
+      case 3:
+        return ticket != null ? ticket!['DistrictName'] : '';
+      case 4:
+        if (ticket != null && ticket!['IssuanceDateTime'] != null) {
+          DateTime issuanceDate = DateTime.parse(ticket!['IssuanceDateTime']);
+          return issuanceDate.myDate;
+        }
+        return '';
+      case 5:
+        return ticket != null ? ticket!['InfoMessage'] : '';
+      case 6:
+        return ticket != null ? ticket!['TicketStatus'] : '';
+      default:
+        return '';
+    }
+  }
+}
+
+extension CustomDate on DateTime {
+  String get myDate {
+    final hour12 = hour % 12 == 0 ? 12 : hour % 12;
+    final period = hour < 12 ? 'AM' : 'PM';
+    return '$day/$month/$year $hour12:${minute.toString().padLeft(2, '0')} $period';
   }
 }

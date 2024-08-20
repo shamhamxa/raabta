@@ -37,11 +37,12 @@ class LiscenseProcedure extends StatelessWidget {
                       scrollbarOrientation: ScrollbarOrientation.bottom,
                       interactive: true,
                       controller: scrollController,
-                      trackVisibility: true,
+                      thumbVisibility: true,
+                      trackVisibility: false,
                       child: ListView(
                         controller: scrollController,
                         scrollDirection: Axis.horizontal,
-                        padding: const EdgeInsets.only(bottom: 10),
+                        padding: const EdgeInsets.only(bottom: 5),
                         children: [
                           Row(
                             children: [
@@ -179,7 +180,7 @@ class LiscenseProcedure extends StatelessWidget {
                     height: 10,
                   ),
                   SizedBox(
-                    height: 30,
+                    height: 40,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 14),
                       child: Text(

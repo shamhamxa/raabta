@@ -22,7 +22,7 @@ class TrafficSignTest extends StatelessWidget {
         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           TrafficSignTopContainer(
-              scaffoldKey: scaffoldKey, text: 'License Test'),
+              scaffoldKey: scaffoldKey, text: 'LICENSE TEST'),
           SizedBox(
             height: screenheight(context) * 0.04,
           ),

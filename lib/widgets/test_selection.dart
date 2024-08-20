@@ -20,7 +20,7 @@ class TestSelection extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: screenwidth(context) * 0.75,
+        width: screenwidth(context) * 0.85,
         height: 50,
         decoration: BoxDecoration(
             color: number == value
@@ -38,7 +38,7 @@ class TestSelection extends StatelessWidget {
                 style: const TextStyle(fontSize: 16),
               ),
               const SizedBox(
-                width: 50,
+                width: 30,
               ),
               Flexible(
                 child: Text(

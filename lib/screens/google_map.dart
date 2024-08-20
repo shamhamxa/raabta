@@ -49,7 +49,7 @@ class _TrafficStatusState extends State<TrafficStatus> {
           log('kamal');
           await googlecontroller.animateCamera(
             CameraUpdate.newCameraPosition(
-              CameraPosition(target: currentPosition ?? _center, zoom: 10.0),
+              CameraPosition(target: currentPosition ?? _center, zoom: 14.0),
             ),
           );
           // }
@@ -65,11 +65,11 @@ class _TrafficStatusState extends State<TrafficStatus> {
                   child: CircularProgressIndicator(),
                 )
               : GoogleMap(
-                  // markers: {
-                  //   Marker(
-                  //       markerId: const MarkerId('1'),
-                  //       position: currentPosition),
-                  // },
+                  markers: {
+                    Marker(
+                        markerId: const MarkerId('1'),
+                        position: currentPosition),
+                  },
                   zoomControlsEnabled: false,
                   onMapCreated: (controller) {
                     googlecontroller = controller;
