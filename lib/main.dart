@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:raabta/controller/loading_controller.dart';
 import 'package:raabta/controller/map_permission.dart';
 import 'package:raabta/controller/score.dart';
 import 'package:raabta/controller/slider_controller.dart';
 import 'package:raabta/controller/ui_controller.dart';
+import 'package:raabta/controller/weather_controller.dart';
 import 'package:raabta/routes/route.dart';
 import 'package:raabta/theme/theme_provider.dart';
 import 'package:raabta/utils/app_color.dart';
@@ -34,6 +36,8 @@ class RaabtaApp extends StatelessWidget {
           ChangeNotifierProvider(create: (context) => SliderController()),
           ChangeNotifierProvider(create: (context) => TotalScore()),
           ChangeNotifierProvider(create: (context) => GetPermissionLocation()),
+          ChangeNotifierProvider(create: (context) => WeatherController()),
+          ChangeNotifierProvider(create: (context) => LoadingController()),
         ],
         child: Consumer<ThemeProvider>(
           builder: (context, theme, child) {
@@ -42,8 +46,8 @@ class RaabtaApp extends StatelessWidget {
               theme: ThemeData(
                 brightness: Brightness.light,
                 colorScheme: ColorScheme.light(
-                  background: AppColor.white,
-                  primary: Colors.green.shade900,
+                  surface: AppColor.white,
+                  primary: Colors.green.shade800,
                   secondary: const Color.fromARGB(255, 194, 227, 237),
                 ),
                 textTheme:

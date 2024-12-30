@@ -8,12 +8,14 @@ import 'package:raabta/screens/License/learner_permit.dart';
 import 'package:raabta/screens/License/renewal.dart';
 import 'package:raabta/screens/afghan/afghan_driving_license.dart';
 import 'package:raabta/screens/afghan/learner_permit.dart';
+import 'package:raabta/screens/emergency.dart';
 import 'package:raabta/screens/home.dart';
 import 'package:raabta/screens/liscense_procedure.dart';
 import 'package:raabta/screens/offense_list.dart';
 import 'package:raabta/screens/officials/driving_license.dart';
 import 'package:raabta/screens/officials/learner_permit.dart';
 import 'package:raabta/screens/traffic_education/traffic_education.dart';
+import 'package:raabta/screens/weather.dart';
 import 'package:raabta/splash.dart';
 
 class AppRouter {
@@ -33,6 +35,8 @@ class AppRouter {
   static const String internationalpermit = '/internationalpermit';
   static const String internationallicense = '/internationallicense';
   static const String trafficeducation = '/trafficeducation';
+  static const String emergencynumbers = '/emergencynumbers';
+  static const String weather = '/weather';
 
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -47,6 +51,11 @@ class AppRouter {
       case trafficeducation:
         return MaterialPageRoute(
             builder: (context) => const TrafficEducation());
+      case emergencynumbers:
+        return MaterialPageRoute(
+            builder: (context) => const EmergencyNumbers());
+      case weather:
+        return MaterialPageRoute(builder: (context) => const Weather());
 
       case liscense:
         return MaterialPageRoute(

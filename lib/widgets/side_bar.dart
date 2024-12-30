@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:raabta/controller/ui_controller.dart';
 import 'package:raabta/routes/route.dart';
+import 'package:raabta/screens/challan.dart';
 import 'package:raabta/screens/liscense_procedure.dart';
 import 'package:raabta/screens/offense_list.dart';
 import 'package:raabta/screens/traffic_education/traffic_education.dart';
+import 'package:raabta/screens/vehicle.dart';
 import 'package:raabta/utils/media_query.dart';
 import 'package:raabta/webview/website.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -35,17 +37,17 @@ class _SideBarState extends State<SideBar> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Colors.green.shade50,
+      backgroundColor: const Color.fromARGB(255, 245, 247, 245),
       key: widget.key,
-      width: screenwidth(context) * 0.6,
+      width: screenwidth(context) * 0.65,
       // backgroundColor: Colors.white.shade300,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 60),
+        padding: const EdgeInsets.symmetric(vertical: 30),
         child: Column(
           children: [
             Image.asset(
               'assets/images/logo.png',
-              height: 100,
+              height: 80,
             ),
             const SizedBox(
               height: 20,
@@ -62,7 +64,6 @@ class _SideBarState extends State<SideBar> {
               leading: Image.asset(
                 'assets/images/home.png',
                 height: 30,
-                color: Colors.green.shade800,
               ),
               title: const Text('Home'),
             ),
@@ -79,8 +80,7 @@ class _SideBarState extends State<SideBar> {
                         builder: (context) => const KPKTraffic()));
               },
               leading: Image.asset(
-                'assets/images/global.png',
-                color: Colors.green.shade800,
+                'assets/images/earth.png',
                 height: 30,
               ),
               title: const Text('KP Website'),
@@ -99,7 +99,6 @@ class _SideBarState extends State<SideBar> {
               },
               leading: Image.asset(
                 'assets/images/list.png',
-                color: Colors.green.shade800,
                 height: 30,
               ),
               title: const Text('Offense List'),
@@ -118,7 +117,6 @@ class _SideBarState extends State<SideBar> {
               },
               leading: Image.asset(
                 'assets/images/card.png',
-                color: Colors.green.shade800,
                 height: 30,
               ),
               title: const Text('License Procedure'),
@@ -136,11 +134,44 @@ class _SideBarState extends State<SideBar> {
                         builder: (context) => const TrafficEducation()));
               },
               leading: Image.asset(
-                'assets/images/warning.png',
-                color: Colors.green.shade800,
+                'assets/images/crisis.png',
                 height: 30,
               ),
               title: const Text('Traffic Education'),
+            ),
+            const SizedBox(
+              height: 3,
+            ),
+            ListTile(
+              tileColor: Colors.white,
+              splashColor: Colors.blue.shade100,
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Challan()));
+              },
+              leading: Image.asset(
+                'assets/images/invoice.png',
+                height: 30,
+              ),
+              title: const Text('Challan Verify'),
+            ),
+            const SizedBox(
+              height: 3,
+            ),
+            ListTile(
+              tileColor: Colors.white,
+              splashColor: Colors.blue.shade100,
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const VehicleLicense()));
+              },
+              leading: Image.asset(
+                'assets/images/invoice.png',
+                height: 30,
+              ),
+              title: const Text('Vehicle Verify'),
             ),
             const SizedBox(
               height: 3,
@@ -154,7 +185,7 @@ class _SideBarState extends State<SideBar> {
                       return SizedBox(
                         width: screenwidth(context) * 0.3,
                         child: AlertDialog(
-                          surfaceTintColor: Colors.green,
+                          surfaceTintColor: Colors.green.shade200,
                           content: SizedBox(
                             height: screenheight(context) * 0.42,
                             child: Stack(
@@ -357,7 +388,6 @@ class _SideBarState extends State<SideBar> {
               leading: Image.asset(
                 'assets/images/phone.png',
                 height: 35,
-                color: Colors.green.shade800,
               ),
               title: const Text('Contact Us'),
             ),

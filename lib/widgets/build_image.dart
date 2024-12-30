@@ -39,9 +39,11 @@ Widget buildImage(String images, int index, String data) => Column(
     );
 Widget buildindicator(List values) => Consumer<SliderController>(
       builder: (context, sliderController, child) {
+        print('Active Index: ${sliderController.activeIndex}');
+        print('Values Length: ${values.length}');
         return AnimatedSmoothIndicator(
           activeIndex: sliderController.activeIndex,
-          count: values.length,
+          count: values.isNotEmpty ? values.length : 1,
           effect: JumpingDotEffect(
             dotWidth: 24,
             dotColor: Colors.grey.shade200,

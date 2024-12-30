@@ -34,7 +34,7 @@ class AfghanDrivingLicense extends StatelessWidget {
                 'Medical Certificate (By Authorized Medical Practitioner)',
               ),
               Text(
-                'Tenant information From (TIF) Of Concerned Police Station Alongwith CNIN Copy Of House Owner',
+                'Tenant information From (TIF) Of Concerned Police Station Alongwith CNIC Copy Of House Owner',
               ),
               Text(
                 'Original NOC From Afghan Refugees Commissionerate (ARC)',

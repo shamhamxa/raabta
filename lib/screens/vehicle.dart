@@ -8,7 +8,6 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:raabta/model/license_model.dart';
 import 'package:raabta/utils/media_query.dart';
 import 'package:raabta/widgets/app_button.dart';
-import 'package:raabta/widgets/side_bar.dart';
 
 class VehicleLicense extends StatefulWidget {
   const VehicleLicense({super.key});
@@ -61,7 +60,7 @@ class _VehicleLicenseState extends State<VehicleLicense> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const SideBar(),
+      // drawer: const SideBar(),
       appBar: AppBar(
         title: const Text(
           'LICENSE VERIFICATION',

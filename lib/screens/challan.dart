@@ -6,7 +6,6 @@ import 'package:http/http.dart' as http;
 import 'package:raabta/model/challan_model.dart';
 import 'package:raabta/utils/media_query.dart';
 import 'package:raabta/widgets/app_button.dart';
-import 'package:raabta/widgets/side_bar.dart';
 
 class Challan extends StatefulWidget {
   const Challan({super.key});
@@ -78,10 +77,10 @@ class _ChallanState extends State<Challan> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Padding(
-        padding: EdgeInsets.only(top: screenheight(context) * 0.1),
-        child: const SideBar(),
-      ),
+      // drawer: Padding(
+      //   padding: EdgeInsets.only(top: screenheight(context) * 0.1),
+      //   child: const SideBar(),
+      // ),
       appBar: AppBar(
         title: const Text(
           'CHALLAN VERIFICATION',

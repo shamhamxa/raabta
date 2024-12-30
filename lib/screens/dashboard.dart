@@ -94,9 +94,8 @@ class _DashboardState extends State<Dashboard>
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(bottom: 10),
-            child: SizedBox(
-              height: screenheight(context) * 0.9,
+            padding: const EdgeInsets.only(bottom: 2),
+            child: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -168,7 +167,7 @@ class _DashboardState extends State<Dashboard>
                               .pushNamed(AppRouter.trafficeducation);
                         },
                         color: Colors.white.withOpacity(0.6),
-                        image: 'assets/images/warning.png',
+                        image: 'assets/images/siren.png',
                         text: 'Traffic Education',
                         textColor: const Color.fromARGB(255, 162, 44, 35),
                       ),
@@ -181,6 +180,28 @@ class _DashboardState extends State<Dashboard>
                         image: 'assets/images/id-card.png',
                         text: 'Liscense Procedure',
                         textColor: Colors.teal,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      DashboardCard(
+                          onTap: () {
+                            Navigator.of(context)
+                                .pushNamed(AppRouter.emergencynumbers);
+                          },
+                          color: Colors.white.withOpacity(0.6),
+                          image: 'assets/images/warn.png',
+                          text: 'Emergency Numbers',
+                          textColor: Colors.orange),
+                      DashboardCard(
+                        onTap: () {
+                          Navigator.of(context).pushNamed(AppRouter.weather);
+                        },
+                        color: Colors.white.withOpacity(0.6),
+                        image: 'assets/images/cloudy.png',
+                        text: 'Weather',
+                        textColor: Colors.blueGrey.shade700,
                       ),
                     ],
                   ),

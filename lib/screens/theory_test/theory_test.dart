@@ -9,16 +9,16 @@ import 'package:raabta/model/score_model.dart';
 import 'package:raabta/widgets/app_button.dart';
 import 'package:raabta/widgets/test_selection.dart';
 
-class SignTest extends StatefulWidget {
-  const SignTest({Key? key}) : super(key: key);
+class TheoryTest extends StatefulWidget {
+  const TheoryTest({Key? key}) : super(key: key);
 
   @override
-  State<SignTest> createState() => _SignTestState();
+  State<TheoryTest> createState() => _TheoryTestState();
 }
 
 bool isShow = false;
 
-class _SignTestState extends State<SignTest> {
+class _TheoryTestState extends State<TheoryTest> {
   int selectedValue = 0;
   double percent = 0;
   int score = 0;
@@ -33,27 +33,27 @@ class _SignTestState extends State<SignTest> {
   final confettiController =
       ConfettiController(duration: const Duration(seconds: 3));
 
-  final List<Map<String, dynamic>> questions = [
-    {'question': 'What does this sign mean?', 'image': 'assets/images/1.jpeg'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/2.jpeg'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/3.jpeg'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/4.jpeg'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/5.jpeg'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/6.jpeg'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/7.jpeg'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/8.jpeg'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/9.jpeg'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/10.jpeg'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/11.jpeg'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/12.jpeg'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/13.jpeg'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/14.jpeg'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/15.jpeg'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/16.jpeg'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/17.jpeg'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/18.jpeg'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/19.jpeg'},
-    {'question': 'What does this sign mean?', 'image': 'assets/images/20.jpeg'},
+  final List<String> questions = [
+    'When you will have to check Engine Oil of your vehicle ?',
+    'Reduction level of ------ can cause accidents ?',
+    'Zebra Crossing is specified for ?',
+    'You are allowed to overtake ?',
+    'You should switch on your vehicle light after sun set ?',
+    'which vehicle has the right of way at roundabout ?',
+    'How much distance from intersection should be kept ?',
+    'What should you do on blind turn ?',
+    'Where do you see while changing the gear of the vehicle ?',
+    'Which gear is powerful ?',
+    'Which gear to use during turning ?',
+    'Which sign board shows danger ?',
+    'On which speed limit you have to fasten the seat belt ?',
+    'Which indicator will be used while overtaking in roundabout ?',
+    'What do you mean by double yellow line ?',
+    'Is it necessary for deiver to keep driving license while driving ?',
+    'In which conditions a driver can park his vehicle on footpath ?',
+    'In which condition a public driver can cross the red signal ?',
+    'Can you park your car in front of closed gate ?',
+    "If your vehicle's speed is 60Km/h you should keep how much distance from front vehicle ?",
     // 'What does this sign mean?',
     // 'What does this sign mean?',
     // 'What does this sign mean?',
@@ -76,133 +76,128 @@ class _SignTestState extends State<SignTest> {
   ];
   final List<List<String>> optionsList = [
     [
-      'Left stop',
-      'No Right Turn',
-      'Right Turn',
+      'When Engine heat up',
+      'After every 600 Km',
+      'prior to Leaving for long journey',
     ],
     [
-      'Airport',
-      'Petrol Pump',
-      'Strong cross wing',
+      'Water of Battery',
+      'Brake fluid level',
+      'Radiators Walter',
     ],
     [
-      'Passing Police Custom post without stopping',
-      'Custom police Ahead',
-      'Danger Ahead',
+      'Animals',
+      'Zebras',
+      'Pedestrian',
     ],
     [
-      'No entry for vehicle Exceeding 6 ton weight on Axle',
-      'No Entry for good Vehicles',
-      'Height of The Bridge 6 feet',
+      'At main Crossing',
+      'At broker center line',
+      'At bridge',
     ],
     [
-      'Crossing',
-      'Stop Line',
-      'Lines',
+      '20 Minutes',
+      '30 Minutes',
+      '40 Minutes',
     ],
     [
-      'Parking',
-      'No Parking',
-      'Stop',
+      'The traffic coming from the right side',
+      'The traffic coming from the left side',
+      'None of them',
     ],
     [
-      'End of speed Limit Imposed',
-      'Round About',
-      'Road Closed',
+      '10 Meter',
+      '30 Meter',
+      '40 Meter',
     ],
-    // // [
-    // //   'Speed Limit 50km',
-    // //   'Speed Limit 5 KM',
-    // //   'End of speed Limit Imposed',
-    // ],
     [
-      'Other Dangers',
+      'Use the back Mirrors',
+      'Use the horn',
+      'Slow down your speed',
+    ],
+    [
+      'Straight',
+      'See the gear',
+      'See the feet',
+    ],
+    [
+      'Reverse gear',
+      'First gear',
+      'Fourth gear',
+    ],
+    [
+      'First gear',
+      'Second gear',
+      'Third gear',
+    ],
+    [
+      'Mandatory',
       'Warning',
-      'Road Closed',
+      'Informatory',
     ],
     [
-      'Animal Crossing',
-      'Wild Animal Crossing',
-      'Cattle Crossing',
+      '80Km',
+      '100Km',
+      'At any Speed limit',
     ],
     [
-      'Red',
-      'Hospital',
-      'First Aid Centre',
+      'Right',
+      'Left',
+      'Overtaking is not allowed',
     ],
     [
-      'Restaurant',
-      'Hospital',
-      'Bus stop',
+      'Can park vehicle',
+      'Cannot stop',
+      "Give way to heavy vehicle",
     ],
     [
-      'No entry for cycle',
-      'No entry for M. Cycle',
-      'No entry',
+      'Yes',
+      'No',
+      "Don't Know",
     ],
     [
-      'Un even Road',
-      'Road Dips',
-      'Slippery Road',
+      'Emergency',
+      'Not availabiltiy of parking',
+      'Not allowed in any case',
     ],
     [
-      'Steep Ascent',
-      'Dangerous Decent',
-      'Slippery road',
+      'Emergency',
+      'While going to market',
+      'Never',
     ],
     [
-      'Level Crossing (with Gate)',
-      'Level Crossing (without Gate)',
-      'Train Engine',
+      'Yes',
+      'No',
+      "Don't Know",
     ],
     [
-      'Children Crossing',
-      'Pedestrian Crossing',
-      'Bus Stop',
-    ],
-    [
-      'Hand',
-      'Stop',
-      'Five fingers',
-    ],
-    [
-      'Stop',
-      'Slow',
-      'Stop Ahead',
-    ],
-    [
-      'Road is Closed Ahead',
-      'Stop',
-      'One Way',
-    ],
-    [
-      'Keep Left',
-      'Arrow',
-      'One Way',
+      '30 Meter',
+      '40 Meter',
+      '50 Meter',
     ],
   ];
   final List<String> correctAnswers = [
-    'No Right Turn',
-    'Strong cross wing',
-    'Custom police Ahead',
-    'No entry for vehicle Exceeding 6 ton weight on Axle',
-    'Stop Line',
-    'No Parking',
-    'End of speed Limit Imposed',
-
-    'Other Dangers',
-    'Wild Animal Crossing',
-    'First Aid Centre',
-    'Bus stop',
-    'No entry for M. Cycle',
-    'Road Dips',
-    'Steep Ascent',
-    'Level Crossing (without Gate)',
-    'Pedestrian Crossing',
-    'Stop',
-    'Slow',
-    'Road is Closed Ahead',
-    'One Way Road',
+    'prior to Leaving for long journey',
+    'Brake fluid level',
+    'Pedestrian',
+    'At broker center line',
+    '20 Minutes',
+    'The traffic coming from the right side',
+    '10 Meter',
+    'Slow down your speed',
+    'Straight',
+    'Reverse gear',
+    'Second gear',
+    'Warning',
+    'At any Speed limit',
+    'Overtaking is not allowed',
+    'Cannot stop',
+    'Yes',
+    'Not allowed in any case',
+    'Never',
+    'No',
+    '30 Meter',
+    // 'One Way Road',
     // 'Parking Place Indicated',
     // 'Facility indicated',
     // 'No Entry for Motor Vehicle',
@@ -306,20 +301,27 @@ class _SignTestState extends State<SignTest> {
                             '',
                             style: TextStyle(fontSize: 18),
                           )
-                        : Text(
-                            'Question : ${questions[point]['question'].toString()}      ${point + 1}/${questions.length}'),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    currentQuestionIndex == questions.length
-                        ? const Text('')
-                        : Image.asset(
-                            questions[point]['image'],
-                            height: 100,
+                        : Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 18),
+                            child: Text(
+                              'Question : ${questions[point].toString()}      ${point + 1}/${questions.length}',
+                              style: const TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.center,
+                            ),
                           ),
                     const SizedBox(
-                      height: 15,
+                      height: 20,
                     ),
+                    // currentQuestionIndex == questions.length
+                    //     ? const Text('')
+                    //     : Image.asset(
+                    //         questions[point]['image'],
+                    //         height: 100,
+                    //       ),
+                    // const SizedBox(
+                    //   height: 15,
+                    // ),
                     currentQuestionIndex == questions.length
                         ? const SizedBox()
                         : TestSelection(
@@ -426,7 +428,7 @@ class _SignTestState extends State<SignTest> {
                                     ScoreDate(
                                         score: score,
                                         date: DateTime.now(),
-                                        catagory: 'Sign Quiz'),
+                                        catagory: 'Theory Quiz'),
                                   )
                               : const SizedBox();
                           score >= 10

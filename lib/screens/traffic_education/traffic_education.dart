@@ -55,7 +55,6 @@ class _TrafficEducationState extends State<TrafficEducation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: Colors.white,
@@ -71,7 +70,8 @@ class _TrafficEducationState extends State<TrafficEducation> {
                 return Padding(
                   padding: const EdgeInsets.all(3.0),
                   child: Card(
-                    elevation: 0.5,
+                    color: Colors.green.shade50,
+                    elevation: 0,
                     child: ListTile(
                       contentPadding: const EdgeInsets.all(8),
                       onTap: () {

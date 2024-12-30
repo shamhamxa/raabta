@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:raabta/screens/prepare.dart';
 import 'package:raabta/screens/score.dart';
 import 'package:raabta/screens/start_test_catagory/start_test_catagory.dart';
 import 'package:raabta/utils/media_query.dart';
@@ -32,7 +33,14 @@ class TrafficSignTest extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 LicenseTestCard(
-                  ontap: () {},
+                  ontap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Prepare(),
+                      ),
+                    );
+                  },
                   textColor: const Color.fromRGBO(16, 77, 128, 1),
                   borderColor: const Color.fromRGBO(16, 77, 128, 1),
                   containerColor: Colors.blue.shade100,

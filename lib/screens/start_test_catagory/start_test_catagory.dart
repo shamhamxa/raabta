@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:raabta/screens/random_test/random_test.dart';
 import 'package:raabta/screens/sign_test/sign_test.dart';
+import 'package:raabta/screens/theory_test/theory_test.dart';
 import 'package:raabta/utils/media_query.dart';
 import 'package:raabta/widgets/license_test_widgets/license_test_card.dart';
 import 'package:raabta/widgets/license_test_widgets/traffic_test_top_card.dart';
@@ -31,7 +33,14 @@ class StartTestCatagory extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 LicenseTestCard(
-                  ontap: () {},
+                  ontap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const RandomTest(),
+                      ),
+                    );
+                  },
                   textColor: const Color.fromARGB(255, 144, 88, 3),
                   borderColor: const Color.fromARGB(255, 171, 104, 3),
                   containerColor: Colors.orange.shade100,
@@ -53,7 +62,14 @@ class StartTestCatagory extends StatelessWidget {
                     text: '   Sign Test',
                     urduText: 'سائن ٹیسٹ   '),
                 LicenseTestCard(
-                    ontap: () {},
+                    ontap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const TheoryTest(),
+                        ),
+                      );
+                    },
                     textColor: const Color.fromARGB(255, 0, 121, 109),
                     image: 'assets/images/test.jpeg',
                     borderColor: const Color.fromARGB(255, 0, 121, 109),
