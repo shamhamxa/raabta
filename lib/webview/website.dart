@@ -49,28 +49,28 @@ class _KPKTrafficState extends State<KPKTraffic> {
                 height: containerHeight,
                 child: Stack(
                   children: [
-                    WebView(
-                      onWebResourceError: (error) {},
-                      onPageStarted: (url) {
-                        setState(() {
-                          isLoading = true;
-                        });
-                        log('on page started');
-                        // await webViewController.runJavascriptReturningResult(
-                        //     'document.getElementById("printSlip").innerHTML=""');
-                      },
-                      onPageFinished: (url) {
-                        log('message');
-                        setState(() {
-                          isLoading = false;
-                        });
-                      },
-                      javascriptMode: JavascriptMode.unrestricted,
-                      initialUrl: 'https://ptpkp.gov.pk/',
-                      onWebViewCreated: (controller) {
-                        webViewController = controller;
-                      },
-                    ),
+                    // WebView(
+                    //   onWebResourceError: (error) {},
+                    //   onPageStarted: (url) {
+                    //     setState(() {
+                    //       isLoading = true;
+                    //     });
+                    //     log('on page started');
+                    //     // await webViewController.runJavascriptReturningResult(
+                    //     //     'document.getElementById("printSlip").innerHTML=""');
+                    //   },
+                    //   onPageFinished: (url) {
+                    //     log('message');
+                    //     setState(() {
+                    //       isLoading = false;
+                    //     });
+                    //   },
+                    //   javascriptMode: JavascriptMode.unrestricted,
+                    //   initialUrl: 'https://ptpkp.gov.pk/',
+                    //   onWebViewCreated: (controller) {
+                    //     webViewController = controller;
+                    //   },
+                    // ),
                     if (isLoading)
                       const Center(
                         child: CircularProgressIndicator.adaptive(),

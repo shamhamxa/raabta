@@ -275,7 +275,7 @@ class TicketTable extends StatelessWidget {
       borderRadius: BorderRadius.circular(10),
       child: DataTable(
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(50)),
-        headingRowColor: MaterialStatePropertyAll(Colors.green.shade800),
+        headingRowColor: WidgetStatePropertyAll(Colors.green.shade800),
         dataRowMaxHeight: 50,
         columnSpacing: 40,
         dividerThickness: 0.01,
@@ -303,8 +303,8 @@ class TicketTable extends StatelessWidget {
             final rowColor = isEvenRow ? Colors.grey.shade200 : Colors.white;
 
             return DataRow(
-              color: MaterialStateProperty.resolveWith<Color?>(
-                (Set<MaterialState> states) => rowColor,
+              color: WidgetStateProperty.resolveWith<Color?>(
+                (Set<WidgetState> states) => rowColor,
               ),
               cells: [
                 DataCell(

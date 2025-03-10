@@ -29,6 +29,7 @@ class DashboardCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             color: color,
             child: Container(
+              height: 110,
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
@@ -41,7 +42,7 @@ class DashboardCard extends StatelessWidget {
                   Image.asset(
                     image,
                     color: imagecolors,
-                    height: 60,
+                    height: 30,
                   )
                       .animate()
                       .slideX(delay: const Duration(milliseconds: 200))

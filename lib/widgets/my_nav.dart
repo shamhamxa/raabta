@@ -59,7 +59,7 @@ class _MyNavState extends State<MyNav> with TickerProviderStateMixin {
           labels: const [
             "Dashboard",
             "Challan Verfication",
-            "Vehicle Verification"
+            "License Verification"
           ],
           icons: const [Icons.dashboard, Icons.token, Icons.car_crash],
           initialSelectedTab: "Dashboard",

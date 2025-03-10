@@ -19,40 +19,46 @@ class LiscenseCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-        child: Card(
-          elevation: 5,
-          // color: Colors.blue.shade100,
+    return Expanded(
 
-          color: color,
+      child: SizedBox(
+        // height: 180,
+        child: GestureDetector(
+          onTap: onTap,
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 5),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  image,
-                  color: imageColor,
-                  height: 60,
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: Text(
-                    text,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: textColor,
-                      fontSize: 15,
+            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+            child: Card(
+              elevation: 2,
+              // color: Colors.blue.shade100,
+
+              color: color,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
+                child: Column(
+                  // mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      image,
+                      color: imageColor,
+                      height: 60,
                     ),
-                  ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Text(
+                        text,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: textColor,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
         ),

@@ -4,7 +4,7 @@ import 'package:raabta/utils/app_color.dart';
 ThemeData lightMode = ThemeData(
   brightness: Brightness.light,
   colorScheme: ColorScheme.light(
-    background: const Color(0xFFFFFFFF),
+    surface: const Color(0xFFFFFFFF),
     primary: Colors.green.shade900,
     secondary: AppColor.white,
   ),
