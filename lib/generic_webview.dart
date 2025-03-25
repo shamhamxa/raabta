@@ -96,10 +96,10 @@ class _WebViewPageState extends State<GenericWebViewPage> {
             },
           ),
         ),
-
       ),
     );
   }
+
   double screenheight(BuildContext context) {
     return MediaQuery.of(context).size.height;
   }
